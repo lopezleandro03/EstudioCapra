@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstudioCapra.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,32 @@ namespace EstudioCapra.Controllers
         // GET: /Service/
         public ActionResult Index()
         {
-            return View();
+            ServiceModel s1 = new ServiceModel() 
+            {
+                Id = 1,
+                Name = "Cumpleaños Maria",
+                Description = "Evento del 17 Junio por el cumpleaños de Maria"
+            };
+
+            ServiceModel s2 = new ServiceModel()
+            {
+                Id = 2,
+                Name = "Cumpleaños Jose",
+                Description = "Evento del 17 Junio por el cumpleaños de Maria"
+            };
+            ServiceModel s3 = new ServiceModel()
+            {
+                Id = 3,
+                Name = "Evento Final",
+                Description = "Evento del 17 Junio por el cumpleaños de Maria"
+            };
+
+            List<ServiceModel> model = new List<ServiceModel>();
+            model.Add(s1);
+            model.Add(s2);
+            model.Add(s3);
+
+            return View(model);
         }
 
         //
