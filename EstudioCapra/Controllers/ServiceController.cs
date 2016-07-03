@@ -13,32 +13,17 @@ namespace EstudioCapra.Controllers
         // GET: /Service/
         public ActionResult Index()
         {
-            ServiceModel s1 = new ServiceModel() 
+            using (var context = new EstudioCapraEntities())
             {
-                Id = 1,
-                Name = "Cumpleaños Maria",
-                Description = "Evento del 17 Junio por el cumpleaños de Maria"
-            };
-
-            ServiceModel s2 = new ServiceModel()
-            {
-                Id = 2,
-                Name = "Cumpleaños Jose",
-                Description = "Evento del 17 Junio por el cumpleaños de Maria"
-            };
-            ServiceModel s3 = new ServiceModel()
-            {
-                Id = 3,
-                Name = "Evento Final",
-                Description = "Evento del 17 Junio por el cumpleaños de Maria"
-            };
-
-            List<ServiceModel> model = new List<ServiceModel>();
-            model.Add(s1);
-            model.Add(s2);
-            model.Add(s3);
-
-            return View(model);
+                var model = (from x in context.Servicios
+                             select new ServiceModel()
+                             {
+                                 Id = x.ServicioId,
+                                 Description = "Test EF Desc",
+                                 Name = "Test EF"
+                             }).ToList();
+                return View(model);
+            }
         }
 
         //
@@ -63,6 +48,22 @@ namespace EstudioCapra.Controllers
             try
             {
                 // TODO: Add insert logic here
+                var service = new Servicio()
+                {
+                    TipoServicio = new TipoServicio() { Nombre = "test" },
+                    Contratoes = new List<Contrato>(){ new Contrato(){ 
+                        ClienteId = 1,
+                        ContratoId = 1,
+                        Costo = 111111,
+                        FechaCalculoSaldo = DateTime.Now
+                    }}
+                };
+
+
+                using (var context = new EstudioCapraEntities())
+                {
+                    context.Servicios.Add(service);
+                }
 
                 return RedirectToAction("Index");
             }
