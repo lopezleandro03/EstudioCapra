@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ab115661fc746d981dcc63005dcc30f" Name="Diagram1">
+        <EntityTypeShape EntityType="EstudioCapraModel.Cliente" Width="1.5" PointX="12.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Contrato" Width="1.5" PointX="10.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.ContratoEmpleado" Width="1.5" PointX="8" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Empleado" Width="1.5" PointX="5.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Etapa" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.EtapaRecursoFisico" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.EtapaServicio" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.ObjetoMultimedia" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.RecursoFisico" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Rol" Width="1.5" PointX="8.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Servicio" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.TipoServicio" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.TipoTarea" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.EtapaObjectoMultimedia" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.EtapaTarea" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.ItemMenu" Width="1.5" PointX="13.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.RoleMenu" Width="1.5" PointX="11" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Tarea" Width="1.5" PointX="13" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.TareaEmpleado" Width="1.5" PointX="8" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.TipoRecursoFisico" Width="1.5" PointX="10.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Usuario" Width="1.5" PointX="12.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstudioCapraModel.UsuarioRol" Width="1.5" PointX="11" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="EstudioCapraModel.FK_Contrato_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_ContratoEmpleado_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_TareaEmpleado_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaObjectoMultimedia_Etapa" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaRecursoFisico_Etapa" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaServicio_Etapa" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaTarea_Etapa" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaRecursoFisico_RecursoFisico" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_EtapaObjectoMultimedia_ObjetoMultimedia" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_RoleMenu_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_UsuarioRol_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_Servicio_TipoServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="EstudioCapraModel.FK_Tarea_TipoTarea" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
