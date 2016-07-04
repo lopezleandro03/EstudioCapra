@@ -332,9 +332,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\Common\EstudioCapra.Common.csproj">
       <Project>{4df2c0d0-b95a-4998-bc40-8ada4aaee3b0}</Project>
-      <Name>Common</Name>
+      <Name>EstudioCapra.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

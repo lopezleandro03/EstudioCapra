@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioCapra", "EstudioCapra\EstudioCapra.csproj", "{DAA44D85-3A7A-4E28-BD4C-E46305E9E0B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioCapra.Web", "EstudioCapra\EstudioCapra.Web.csproj", "{DAA44D85-3A7A-4E28-BD4C-E46305E9E0B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioCapra.Tests", "EstudioCapra.Tests\EstudioCapra.Tests.csproj", "{F4C2CCDE-4E97-4C03-817A-B36329DFA67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{4DF2C0D0-B95A-4998-BC40-8ADA4AAEE3B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioCapra.Common", "Common\EstudioCapra.Common.csproj", "{4DF2C0D0-B95A-4998-BC40-8ADA4AAEE3B0}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EstudioCapraDb", "EstudioCapraDb\EstudioCapraDb.sqlproj", "{DFA199AB-29F1-4692-9E0B-2BBE6074BDA9}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EstudioCapra.Database", "EstudioCapraDb\EstudioCapra.Database.sqlproj", "{DFA199AB-29F1-4692-9E0B-2BBE6074BDA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
