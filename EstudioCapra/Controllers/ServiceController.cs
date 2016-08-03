@@ -63,7 +63,6 @@ namespace EstudioCapra.Controllers
                                  IdEtapaServicio = z3.ServicioId,
                                  IdEtapa = z3.EtapaId,
                                  NombreEtapa = z4.Nombre,
-<<<<<<< HEAD
                                  ListaEtapas = (from es in context.EtapaServicios
                                                 join e in context.Etapas on es.EtapaId equals e.EtapaId
                                                 where es.ServicioId == x.ServicioId
@@ -80,18 +79,6 @@ namespace EstudioCapra.Controllers
                              }
                              ).ToList().FirstOrDefault();
 
-=======
-                                 DescripcionEtapa = z4.Descripcion,
-                                 FechaInicioEtapa = z4.FechaInicio,
-                                 FechaFinEtapa = z4.FechaFin,
-                                 IdCliente = x.ClienteId,
-                                 FechaInicioContrato = x.FechaInicio,
-                                 NombreCiente = y.Nombre,
-                                 ApellidoCiente = y.Apellido,
-                                 DescripcionServicio = z2.Descripcion
-                             }
-                             ).ToList();
->>>>>>> origin/master
                 return View(model);
 
             }
