@@ -15,12 +15,20 @@ namespace EstudioCapra.Controllers
         {
             using (var context = new EstudioCapraEntities())
             {
-                var model = (from x in context.Servicios
+                var model = (from x in context.Contratoes
+                             join y in context.Clientes on x.ClienteId equals y.ClienteId
+                             join z in context.Servicios on x.ServicioId equals z.ServicioId
+                             join z2 in context.TipoServicios on z.TipoServicioId equals z2.TipoServicioId
                              select new ServiceModel()
                              {
-                                 Id = x.ServicioId,
-                                 Description = "Test EF Desc",
-                                 Name = "Test EF"
+                                 IdContrato = x.ContratoId,
+                                 IdCliente = x.ClienteId,
+                                 IdServicio  = x.ServicioId,
+                                 FechaInicio = x.FechaInicio,
+                                 NombreCiente = y.Nombre,
+                                 ApellidoCiente = y.Apellido,
+                                 DescripcionServicio = z2.Descripcion
+
                              }).ToList();
                 return View(model);
             }
@@ -28,9 +36,36 @@ namespace EstudioCapra.Controllers
 
         //
         // GET: /Service/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int idContrato)
         {
-            return View();
+            using (var context = new EstudioCapraEntities())
+            {
+                var model = (from x in context.Contratoes
+                             join y in context.Clientes on x.ClienteId equals y.ClienteId
+                             join z in context.Servicios on x.ServicioId equals z.ServicioId
+                             join z2 in context.TipoServicios on z.TipoServicioId equals z2.TipoServicioId
+                             join z3 in context.EtapaServicios on x.ServicioId equals z3.ServicioId
+                             join z4 in context.Etapas on z3.EtapaId equals z4.EtapaId
+                             select new ServiceDetailsModel()
+                             {
+                                 IdContrato = x.ContratoId,
+                                 IdServicio  = x.ServicioId,
+                                 IdEtapaServicio = z3.ServicioId,
+                                 IdEtapa = z3.EtapaId,
+                                 NombreEtapa = z4.Nombre,
+                                 DescripcionEtapa = z4.Descripcion,
+                                 FechaInicioEtapa = z4.FechaInicio,
+                                 FechaFinEtapa = z4.FechaFin,
+                                 IdCliente = x.ClienteId,
+                                 FechaInicioContrato = x.FechaInicio,
+                                 NombreCiente = y.Nombre,
+                                 ApellidoCiente = y.Apellido,
+                                 DescripcionServicio = z2.Descripcion
+                                 }
+                             ).ToList();
+                return View(model);
+
+            }
         }
 
         //

@@ -88,4 +88,7 @@
     <Build Include="dbo\Tables\EtapaServicio.sql" />
     <Build Include="dbo\Tables\Etapa.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="EstudioCapra.Database.publish.xml" />
+  </ItemGroup>
 </Project>

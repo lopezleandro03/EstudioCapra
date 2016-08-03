@@ -3,24 +3,29 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.DescripcionServicio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.NombreCiente)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoCiente)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.DescripcionServicio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.NombreCiente)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.DisplayFor(modelItem => item.ApellidoCiente)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { idContrato=item.IdContrato }) 
         </td>
     </tr>
 }

@@ -225,6 +225,7 @@
     <Compile Include="Models\RoleMenu.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ServiceDetailsModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\Servicio.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
