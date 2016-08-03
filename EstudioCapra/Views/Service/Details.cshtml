@@ -27,7 +27,7 @@
 <div class=" row">
     @foreach (var item in Model.ListaEtapas)
     {
-        <div class="col-lg-3 col-md-6">
+        <div id="@item.IdEtapa" class="col-lg-3 col-md-6 estado">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -59,30 +59,30 @@
 </p>
 <div class="row">
     @foreach (var item in Model.ListaEtapas)
-    {
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Basic Table
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Tarea</th>
-                                    <th>Descripcion</th>
-                                    <th>Inicio</th>
-                                    <th>Fin</th>
-                                    <th>Tipo</th>
-                                    <th>Empleado</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                             @foreach (var tarea in item.ListaTareas) 
-                             { 
+{
+    <div id="table_@item.IdEtapa" class="col-lg-6 tareaTable">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @item.NombreEtapa
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tarea</th>
+                                <th>Descripcion</th>
+                                <th>Inicio</th>
+                                <th>Fin</th>
+                                <th>Tipo</th>
+                                <th>Empleado</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var tarea in item.ListaTareas)
+                            {
                                 <tr>
                                     <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
                                     <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
@@ -92,20 +92,23 @@
                                     <td>@Html.DisplayFor(modeltarea => tarea.ApellidoEmpleado)</td>
                                     <td>@Html.DisplayFor(modeltarea => tarea.StatusTarea)</td>
                                 </tr>
-                             }
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
+                            }
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /.panel-body -->
+                <!-- /.table-responsive -->
             </div>
-            <!-- /.panel -->
+            <!-- /.panel-body -->
         </div>
-    }
+        <!-- /.panel -->
+    </div>
+}
 </div>
 
 <script>
-
+    $(".estado").click(function () {
+        $(".tareaTable").hide();
+        $("#table_" + $(this).attr('id')).show();
+    })
 
 </script>
