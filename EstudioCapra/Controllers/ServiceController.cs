@@ -94,6 +94,11 @@ namespace EstudioCapra.Controllers
         // GET: /Service/Create
         public ActionResult Create()
         {
+            using (var context = new EstudioCapraEntities())
+            {
+                ViewBag.Clientes = (from x in context.Clientes select x).ToList();
+            }
+
             return View();
         }
 

@@ -21,5 +21,6 @@ namespace EstudioCapra.Models
         public string Telefono { get; set; }
         public string Telefono2 { get; set; }
         public Nullable<int> UserId { get; set; }
+        public string NombreCompleto { get; set; }
     }
 }

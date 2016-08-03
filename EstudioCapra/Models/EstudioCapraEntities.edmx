@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EstudioCapraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EstudioCapraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="ClienteId" />
@@ -16,6 +16,7 @@
           <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Telefono2" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Contrato">
           <Key>
@@ -589,18 +590,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EstudioCapraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="ClienteId" />
-          </Key>
-          <Property Name="ClienteId" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" />
-        </EntityType>
         <EntityType Name="Contrato">
           <Key>
             <PropertyRef Name="ContratoId" />
@@ -996,7 +985,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EstudioCapraEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
           <EntitySet Name="Contratoes" EntityType="Self.Contrato" />
           <EntitySet Name="ContratoEmpleadoes" EntityType="Self.ContratoEmpleado" />
           <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
@@ -1070,6 +1058,7 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
             <End Role="TipoServicio" EntitySet="TipoServicios" />
             <End Role="Servicio" EntitySet="Servicios" />
           </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="EstudioCapraModel.Cliente" />
         </EntityContainer>
         <EntityType Name="Servicio">
           <Key>
@@ -1105,25 +1094,25 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EstudioCapraModelStoreContainer" CdmEntityContainer="EstudioCapraEntities">
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="EstudioCapraModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Contratoes">
             <EntityTypeMapping TypeName="EstudioCapraModel.Contrato">
               <MappingFragment StoreEntitySet="Contrato">
@@ -1361,6 +1350,20 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="TipoServicioId" ColumnName="TipoServicioId" />
                 <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="EstudioCapraModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
