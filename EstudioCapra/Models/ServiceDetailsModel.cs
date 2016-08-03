@@ -8,6 +8,7 @@ namespace EstudioCapra.Models
 {
     public class ServiceDetailsModel
     {
+
         public int IdContrato { get; set; }
         public int IdCliente { get; set; }
         public int IdServicio { get; set; }
@@ -19,6 +20,7 @@ namespace EstudioCapra.Models
         public string ApellidoCiente { get; set; }
         public DateTime FechaInicioContrato { get; set; }
         public int IdEtapaServicio { get; set; }
+        public List<EtapaModel> ListaEtapas { get; set; }
         public int IdEtapa { get; set; }
         public string  NombreEtapa { get; set; }
         public string DescripcionEtapa { get; set; }

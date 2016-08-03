@@ -46,23 +46,30 @@ namespace EstudioCapra.Controllers
                              join z2 in context.TipoServicios on z.TipoServicioId equals z2.TipoServicioId
                              join z3 in context.EtapaServicios on x.ServicioId equals z3.ServicioId
                              join z4 in context.Etapas on z3.EtapaId equals z4.EtapaId
+                             where x.ContratoId == idContrato
                              select new ServiceDetailsModel()
                              {
                                  IdContrato = x.ContratoId,
-                                 IdServicio  = x.ServicioId,
+                                 IdServicio = x.ServicioId,
                                  IdEtapaServicio = z3.ServicioId,
                                  IdEtapa = z3.EtapaId,
                                  NombreEtapa = z4.Nombre,
-                                 DescripcionEtapa = z4.Descripcion,
-                                 FechaInicioEtapa = z4.FechaInicio,
-                                 FechaFinEtapa = z4.FechaFin,
-                                 IdCliente = x.ClienteId,
-                                 FechaInicioContrato = x.FechaInicio,
-                                 NombreCiente = y.Nombre,
-                                 ApellidoCiente = y.Apellido,
-                                 DescripcionServicio = z2.Descripcion
-                                 }
-                             ).ToList();
+                                 ListaEtapas = (from es in context.EtapaServicios
+                                                join e in context.Etapas on es.EtapaId equals e.EtapaId
+                                                where es.ServicioId == x.ServicioId
+                                                select new EtapaModel()
+                                                {
+                                                    IdEtapa = e.EtapaId,
+                                                    NombreEtapa = e.Nombre,
+                                                    DescripcionEtapa = e.Descripcion,
+                                                    FechaInicioEtapa = e.FechaInicio,
+                                                    FechaFinEtapa = e.FechaFin
+                                                }
+                                                ).ToList()
+
+                             }
+                             ).ToList().FirstOrDefault();
+
                 return View(model);
 
             }

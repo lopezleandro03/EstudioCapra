@@ -197,6 +197,7 @@
     <Compile Include="Models\Etapa.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EtapaModel.cs" />
     <Compile Include="Models\EtapaObjectoMultimedia.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
@@ -318,6 +319,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
