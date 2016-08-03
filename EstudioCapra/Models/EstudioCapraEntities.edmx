@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EstudioCapraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EstudioCapraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="ClienteId" />
@@ -177,6 +177,7 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.RoleMenu' d
           </Key>
           <Property Name="ServicioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoServicioId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.Tarea' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -584,8 +585,7 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
             <End Role="UsuarioRol" EntitySet="UsuarioRol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EstudioCapraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -613,7 +613,7 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="FechaCalculoSaldo" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Servicio" Relationship="Self.FK_Contrato_Servicio" FromRole="Contrato" ToRole="Servicio" />
+          <NavigationProperty Name="Servicio" Relationship="EstudioCapraModel.FK_Contrato_Servicio" FromRole="Contrato" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="ContratoEmpleado">
           <Key>
@@ -714,15 +714,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <NavigationProperty Name="RoleMenus" Relationship="Self.FK_RoleMenu_Rol" FromRole="Rol" ToRole="RoleMenu" />
           <NavigationProperty Name="UsuarioRols" Relationship="Self.FK_UsuarioRol_Rol" FromRole="Rol" ToRole="UsuarioRol" />
         </EntityType>
-        <EntityType Name="Servicio">
-          <Key>
-            <PropertyRef Name="ServicioId" />
-          </Key>
-          <Property Name="ServicioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TipoServicioId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Servicio" FromRole="Servicio" ToRole="Contrato" />
-          <NavigationProperty Name="TipoServicio" Relationship="Self.FK_Servicio_TipoServicio" FromRole="Servicio" ToRole="TipoServicio" />
-        </EntityType>
         <EntityType Name="TipoServicio">
           <Key>
             <PropertyRef Name="TipoServicioId" />
@@ -737,7 +728,7 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <Property Name="Atributo5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Atributo6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Atributo7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicio_TipoServicio" FromRole="TipoServicio" ToRole="Servicio" />
+          <NavigationProperty Name="Servicios" Relationship="EstudioCapraModel.FK_Servicio_TipoServicio" FromRole="TipoServicio" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="TipoTarea">
           <Key>
@@ -872,18 +863,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Rol" Relationship="Self.FK_UsuarioRol_Rol" FromRole="UsuarioRol" ToRole="Rol" />
         </EntityType>
-        <Association Name="FK_Contrato_Servicio">
-          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servicio">
-              <PropertyRef Name="ServicioId" />
-            </Principal>
-            <Dependent Role="Contrato">
-              <PropertyRef Name="ServicioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ContratoEmpleado_Empleado">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="ContratoEmpleado" Type="Self.ContratoEmpleado" Multiplicity="*" />
@@ -1004,18 +983,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Servicio_TipoServicio">
-          <End Role="TipoServicio" Type="Self.TipoServicio" Multiplicity="1" />
-          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoServicio">
-              <PropertyRef Name="TipoServicioId" />
-            </Principal>
-            <Dependent Role="Servicio">
-              <PropertyRef Name="TipoServicioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tarea_TipoTarea">
           <End Role="TipoTarea" Type="Self.TipoTarea" Multiplicity="1" />
           <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
@@ -1039,7 +1006,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <EntitySet Name="ObjetoMultimedias" EntityType="Self.ObjetoMultimedia" />
           <EntitySet Name="RecursoFisicoes" EntityType="Self.RecursoFisico" />
           <EntitySet Name="Rols" EntityType="Self.Rol" />
-          <EntitySet Name="Servicios" EntityType="Self.Servicio" />
           <EntitySet Name="TipoServicios" EntityType="Self.TipoServicio" />
           <EntitySet Name="TipoTareas" EntityType="Self.TipoTarea" />
           <EntitySet Name="EtapaObjectoMultimedias" EntityType="Self.EtapaObjectoMultimedia" />
@@ -1051,10 +1017,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
           <EntitySet Name="TipoRecursoFisicoes" EntityType="Self.TipoRecursoFisico" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <EntitySet Name="UsuarioRols" EntityType="Self.UsuarioRol" />
-          <AssociationSet Name="FK_Contrato_Servicio" Association="Self.FK_Contrato_Servicio">
-            <End Role="Servicio" EntitySet="Servicios" />
-            <End Role="Contrato" EntitySet="Contratoes" />
-          </AssociationSet>
           <AssociationSet Name="FK_ContratoEmpleado_Empleado" Association="Self.FK_ContratoEmpleado_Empleado">
             <End Role="Empleado" EntitySet="Empleadoes" />
             <End Role="ContratoEmpleado" EntitySet="ContratoEmpleadoes" />
@@ -1095,15 +1057,54 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
             <End Role="Rol" EntitySet="Rols" />
             <End Role="UsuarioRol" EntitySet="UsuarioRols" />
           </AssociationSet>
-          <AssociationSet Name="FK_Servicio_TipoServicio" Association="Self.FK_Servicio_TipoServicio">
-            <End Role="TipoServicio" EntitySet="TipoServicios" />
-            <End Role="Servicio" EntitySet="Servicios" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tarea_TipoTarea" Association="Self.FK_Tarea_TipoTarea">
             <End Role="TipoTarea" EntitySet="TipoTareas" />
             <End Role="Tarea" EntitySet="Tareas" />
           </AssociationSet>
+          <EntitySet Name="Servicios" EntityType="EstudioCapraModel.Servicio" />
+          <AssociationSet Name="FK_Contrato_Servicio" Association="EstudioCapraModel.FK_Contrato_Servicio">
+            <End Role="Servicio" EntitySet="Servicios" />
+            <End Role="Contrato" EntitySet="Contratoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_TipoServicio" Association="EstudioCapraModel.FK_Servicio_TipoServicio">
+            <End Role="TipoServicio" EntitySet="TipoServicios" />
+            <End Role="Servicio" EntitySet="Servicios" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="ServicioId" />
+          </Key>
+          <Property Name="ServicioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoServicioId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contratoes" Relationship="EstudioCapraModel.FK_Contrato_Servicio" FromRole="Servicio" ToRole="Contrato" />
+          <NavigationProperty Name="TipoServicio" Relationship="EstudioCapraModel.FK_Servicio_TipoServicio" FromRole="Servicio" ToRole="TipoServicio" />
+        </EntityType>
+        <Association Name="FK_Contrato_Servicio">
+          <End Type="EstudioCapraModel.Servicio" Role="Servicio" Multiplicity="1" />
+          <End Type="EstudioCapraModel.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="ServicioId" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="ServicioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_TipoServicio">
+          <End Type="EstudioCapraModel.TipoServicio" Role="TipoServicio" Multiplicity="1" />
+          <End Type="EstudioCapraModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServicio">
+              <PropertyRef Name="TipoServicioId" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="TipoServicioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1230,14 +1231,6 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Servicios">
-            <EntityTypeMapping TypeName="EstudioCapraModel.Servicio">
-              <MappingFragment StoreEntitySet="Servicio">
-                <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
-                <ScalarProperty Name="TipoServicioId" ColumnName="TipoServicioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TipoServicios">
             <EntityTypeMapping TypeName="EstudioCapraModel.TipoServicio">
               <MappingFragment StoreEntitySet="TipoServicio">
@@ -1359,6 +1352,15 @@ warning 6002: The table/view 'db26106c12ccd749088a5aa623016c4c18.dbo.UsuarioRol'
               <MappingFragment StoreEntitySet="UsuarioRol">
                 <ScalarProperty Name="RolId" ColumnName="RolId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="EstudioCapraModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TipoServicioId" ColumnName="TipoServicioId" />
+                <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

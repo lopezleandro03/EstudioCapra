@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="EstudioCapraModel.ObjetoMultimedia" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.RecursoFisico" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.Rol" Width="1.5" PointX="8.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstudioCapraModel.Servicio" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.TipoServicio" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.TipoTarea" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.EtapaObjectoMultimedia" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
@@ -27,7 +26,6 @@
         <EntityTypeShape EntityType="EstudioCapraModel.TipoRecursoFisico" Width="1.5" PointX="10.75" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.Usuario" Width="1.5" PointX="12.75" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EstudioCapraModel.UsuarioRol" Width="1.5" PointX="11" PointY="7.75" IsExpanded="true" />
-        <AssociationConnector Association="EstudioCapraModel.FK_Contrato_Servicio" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_ContratoEmpleado_Empleado" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_TareaEmpleado_Empleado" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_EtapaObjectoMultimedia_Etapa" ManuallyRouted="false" />
@@ -38,8 +36,10 @@
         <AssociationConnector Association="EstudioCapraModel.FK_EtapaObjectoMultimedia_ObjetoMultimedia" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_RoleMenu_Rol" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_UsuarioRol_Rol" ManuallyRouted="false" />
-        <AssociationConnector Association="EstudioCapraModel.FK_Servicio_TipoServicio" ManuallyRouted="false" />
         <AssociationConnector Association="EstudioCapraModel.FK_Tarea_TipoTarea" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EstudioCapraModel.Servicio" Width="1.5" PointX="8" PointY="2" />
+        <AssociationConnector Association="EstudioCapraModel.FK_Contrato_Servicio" />
+        <AssociationConnector Association="EstudioCapraModel.FK_Servicio_TipoServicio" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

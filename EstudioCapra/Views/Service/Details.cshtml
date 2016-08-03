@@ -7,12 +7,17 @@
 <div class="row">
     <div class="col-md-6">
         <h2>Detalle de Servicio</h2>
-        <h4>@Html.DisplayFor(model => model.DescripcionServicio)</h4>
+        <h4>@Html.DisplayFor(model => model.NombreServicio)</h4>
+        <h5>@Html.DisplayFor(model => model.DescripcionServicio)</h5>
+        <h6>@Html.DisplayFor(model => model.FechaInicioContrato)</h6>
+
         
     </div>
     <div class="col-md-6">
-        5555555555555   
-
+        <hr />
+        <h4>@Html.DisplayFor(model => model.ApellidoCiente) @Html.DisplayFor(model => model.NombreCiente) </h4>
+        <h5>@Html.DisplayFor(model => model.DireccionCiente)</h5>
+        <hr />
     </div>
 </div>
     

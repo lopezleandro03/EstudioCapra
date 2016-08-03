@@ -21,7 +21,8 @@ namespace EstudioCapra.Models
     
         public int ServicioId { get; set; }
         public int TipoServicioId { get; set; }
-    
+        public string Name { get; set; }
+
         public virtual ICollection<Contrato> Contratoes { get; set; }
         public virtual TipoServicio TipoServicio { get; set; }
     }
