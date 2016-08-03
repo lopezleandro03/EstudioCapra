@@ -7,8 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.EntityClient;
 using System.Data.Metadata.Edm;
-using System.Configuration;
-
 
 namespace Common
 {
@@ -62,16 +60,6 @@ namespace Common
             entityBuilder.Metadata = @"res://*/Models.EstudioCapraEntities.csdl|
                             res://*/Models.EstudioCapraEntities.ssdl|
                             res://*/Models.EstudioCapraEntities.msl";
-
-            /*
-             using (EntityConnection conn =
-                 new EntityConnection(entityBuilder.ToString()))
-             {
-                 conn.Open();
-                 Console.WriteLine("Just testing the connection.");
-                 conn.Close();
-             }
-             */
 
             return entityBuilder.ToString(); 
         }

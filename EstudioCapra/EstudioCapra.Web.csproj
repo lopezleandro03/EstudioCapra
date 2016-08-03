@@ -226,6 +226,7 @@
     <Compile Include="Models\RoleMenu.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ServiceContractModel.cs" />
     <Compile Include="Models\ServiceDetailsModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\Servicio.cs">
@@ -320,6 +321,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Service\Details.cshtml" />
+    <Content Include="Views\Service\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
