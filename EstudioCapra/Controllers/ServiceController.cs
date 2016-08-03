@@ -63,6 +63,12 @@ namespace EstudioCapra.Controllers
                                  IdEtapaServicio = z3.ServicioId,
                                  IdEtapa = z3.EtapaId,
                                  NombreEtapa = z4.Nombre,
+                                 DescripcionServicio = z2.Descripcion,
+                                 NombreServicio = z2.Nombre,
+                                 NombreCiente = y.Nombre,
+                                 DireccionCiente = y.Direccion,
+                                 ApellidoCiente = y.Apellido,
+                                 FechaInicioContrato = x.FechaInicio,
                                  ListaEtapas = (from es in context.EtapaServicios
                                                 join e in context.Etapas on es.EtapaId equals e.EtapaId
                                                 where es.ServicioId == x.ServicioId
