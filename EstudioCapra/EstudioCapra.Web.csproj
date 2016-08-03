@@ -238,6 +238,7 @@
     <Compile Include="Models\TareaEmpleado.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TareaModel.cs" />
     <Compile Include="Models\TipoRecursoFisico.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>

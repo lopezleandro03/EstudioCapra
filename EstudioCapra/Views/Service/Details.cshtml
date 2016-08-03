@@ -24,7 +24,7 @@
 
 <hr />
 
-<div>
+<div class=" row">
     @foreach (var item in Model.ListaEtapas)
     {
         <div class="col-lg-3 col-md-6">
@@ -51,115 +51,61 @@
         </div>
     }
    
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdContrato)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdContrato)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdCliente)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdServicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdServicio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DescripcionServicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescripcionServicio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreCiente)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NombreCiente)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApellidoCiente)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApellidoCiente)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaInicioContrato)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaInicioContrato)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdEtapaServicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdEtapaServicio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdEtapa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdEtapa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreEtapa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NombreEtapa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DescripcionEtapa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescripcionEtapa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaInicioEtapa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaInicioEtapa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaFinEtapa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaFinEtapa)
-        </dd>
-
-    </dl>
+   
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div class="row">
+    @foreach (var item in Model.ListaEtapas)
+    {
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Basic Table
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Tarea</th>
+                                    <th>Descripcion</th>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
+                                    <th>Tipo</th>
+                                    <th>Empleado</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             @foreach (var tarea in item.ListaTareas) 
+                             { 
+                                <tr>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.FechaInicioTarea)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.FechaFinTarea)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.NombreTipoTarea)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.ApellidoEmpleado)</td>
+                                    <td>@Html.DisplayFor(modeltarea => tarea.StatusTarea)</td>
+                                </tr>
+                             }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    }
+</div>
 
+<script>
+
+
+</script>

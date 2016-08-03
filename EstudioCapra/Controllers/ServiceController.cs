@@ -78,9 +78,31 @@ namespace EstudioCapra.Controllers
                                                     NombreEtapa = e.Nombre,
                                                     DescripcionEtapa = e.Descripcion,
                                                     FechaInicioEtapa = e.FechaInicio,
-                                                    FechaFinEtapa = e.FechaFin
+                                                    FechaFinEtapa = e.FechaFin,
+                                                    ListaTareas = (from t in context.Tareas
+                                                                   join te in context.EtapaTareas on t.TareaId equals te.TareaId
+                                                                   join tt in context.TipoTareas on t.TipoTareaId equals tt.TipoTareaId
+                                                                   join te1  in context.TareaEmpleadoes on t.TareaId equals te1.TareaId
+                                                                   join em in context.Empleadoes on te1.EmpleadoId equals em.EmpleadoId
+                                                                   where te.EtapaId == e.EtapaId
+                                                                   select new TareaModel()
+                                                                    {
+                                                                    IdTarea = t.TareaId,
+                                                                    NombreTarea = t.Nombre,
+                                                                    DescripcionTarea = t.Descripcion,
+                                                                    FechaInicioTarea = t.FechaInicio,
+                                                                    FechaFinTarea = t.FechaFin,
+                                                                    idTipoTarea = tt.TipoTareaId,
+                                                                    TemplateTarea = tt.TareaTemplate,
+                                                                    IdEmpleado = te1.EmpleadoId,
+                                                                    ApellidoEmpleado = em.Apellido,
+                                                                    StatusTarea = te1.Status
+
+                                                                    }
+                                                                   ).ToList()
                                                 }
-                                                ).ToList()
+                                               ).ToList()
+                                
 
                              }
                              ).ToList().FirstOrDefault();

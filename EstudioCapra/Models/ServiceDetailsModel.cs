@@ -28,6 +28,7 @@ namespace EstudioCapra.Models
         public string DescripcionEtapa { get; set; }
         public DateTime FechaInicioEtapa { get; set; }
         public DateTime ?FechaFinEtapa { get; set; }
+        
                           
     }
 }
