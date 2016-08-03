@@ -24,9 +24,9 @@ namespace EstudioCapra.Controllers
 
         //
         // GET: /Cliente/Create
-        public ActionResult Create()
+        public PartialViewResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         //

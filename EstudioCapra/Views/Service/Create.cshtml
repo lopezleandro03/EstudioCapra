@@ -62,12 +62,6 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content center-block">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">
-                    Por favor, Ingrese la contraseña.
-                </h4>
-            </div>
             <div class="modal-body center-block">
                 <div class="row center-block">
                     <div id="divNuevoEmpleado"></div>
@@ -85,6 +79,9 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@Ajax.ActionLink("Click Me", "Create", "Cliente", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "divNuevoEmpleado" })
+
+
 <script>
     $("#nuevoEmpleado").click(function () {
         event.preventDefault();
@@ -93,16 +90,14 @@
         $.ajax({
             type: 'GET',
             url: "@Url.Action("Create", "Cliente")",
-            contentType: "application/json",
-            dataType: "json",
+            contentType: "html",
+            dataType: "html",
             success: function (data) {
-                $("#divNuevoEmpleado").append(data)
+                $("#divNuevoEmpleado").html(data);
             },
             error: function (data) {
-                alert("Error");
+                alert("Ouch! Algo anda mal...")
             }
         });
-
-        
     })
 </script>
