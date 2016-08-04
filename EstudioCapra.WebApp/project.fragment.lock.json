@@ -11,6 +11,13 @@
         "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.dll": {},
         "bin/Debug/EstudioCapra.Backend.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Backend.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     },
     "EstudioCapra.Entity/1.0.0": {
@@ -23,6 +30,13 @@
         "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.dll": {},
         "bin/Debug/EstudioCapra.Entity.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Entity.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     },
     "EstudioCapra.Model/1.0.0": {
