@@ -32,8 +32,11 @@ namespace EstudioCapra.Controllers
                                      DescripcionServicio = z2.Descripcion
 
                                  }).ToList();
+
                     return View(model);
                 }
+
+                
             }
             catch (Exception ex)
             {

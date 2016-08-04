@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace EstudioCapra.Controllers
 {
-    public class ClienteController : Controller
+    public class ClienteController  
     {
         //
         // GET: /Cliente/

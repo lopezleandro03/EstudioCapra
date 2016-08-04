@@ -9,11 +9,10 @@
 
 namespace EstudioCapra.Models
 {
-    using System;
+    using Common;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Common;
-    
+
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()

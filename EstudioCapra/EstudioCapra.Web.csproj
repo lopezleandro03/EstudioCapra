@@ -13,13 +13,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EstudioCapra</RootNamespace>
     <AssemblyName>EstudioCapra</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +44,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -49,11 +52,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -99,6 +99,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -162,6 +163,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EstudioCapraBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,6 +179,7 @@
     <Compile Include="Models\ContratoEmpleado.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DbCustom.cs" />
     <Compile Include="Models\Empleado.cs">
       <DependentUpon>EstudioCapraModel.tt</DependentUpon>
     </Compile>
@@ -341,9 +344,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\EstudioCapra.Common.csproj">
-      <Project>{4df2c0d0-b95a-4998-bc40-8ada4aaee3b0}</Project>
-      <Name>EstudioCapra.Common</Name>
+    <ProjectReference Include="..\EstudioCapra.Backend\EstudioCapra.Backend.csproj">
+      <Project>{4DD35651-15AE-41E0-B02B-8C21DF20BF57}</Project>
+      <Name>EstudioCapra.Backend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstudioCapra.Entity\EstudioCapra.Entity.csproj">
+      <Project>{3c0000d2-dab7-44de-83eb-2b501aef1703}</Project>
+      <Name>EstudioCapra.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstudioCapra.Global\EstudioCapra.Global.csproj">
+      <Project>{E6A548CF-6561-4ACE-8170-6D71AFE52208}</Project>
+      <Name>EstudioCapra.Global</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

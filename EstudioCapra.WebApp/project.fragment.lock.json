@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "exports": {
+    "EstudioCapra.Common/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/Common.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Common.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Common.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "EstudioCapra.Backend/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/EstudioCapra.Backend.dll": {}
+      },
+      "runtime": {
+        "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.SqlServer.dll": {},
+        "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.dll": {},
+        "bin/Debug/EstudioCapra.Backend.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Backend.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "EstudioCapra.Entity/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/EstudioCapra.Entity.dll": {}
+      },
+      "runtime": {
+        "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.SqlServer.dll": {},
+        "../packages/EntityFramework.6.0.0/lib/net45/EntityFramework.dll": {},
+        "bin/Debug/EstudioCapra.Entity.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Entity.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "EstudioCapra.Model/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/EstudioCapra.Model.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/EstudioCapra.Model.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Model.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "EstudioCapra.Global/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/EstudioCapra.Global.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/EstudioCapra.Global.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/EstudioCapra.Global.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

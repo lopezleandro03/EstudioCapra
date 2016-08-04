@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EstudioCapra;
-using EstudioCapra.Controllers;
 
 namespace EstudioCapra.Tests.Controllers
 {
