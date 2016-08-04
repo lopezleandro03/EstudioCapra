@@ -1,23 +1,6 @@
 {
   "version": 2,
   "exports": {
-    "EstudioCapra.Common/1.0.0": {
-      "type": "project",
-      "framework": ".NETFramework,Version=v4.6.1",
-      "compile": {
-        "bin/Debug/Common.dll": {}
-      },
-      "runtime": {
-        "bin/Debug/Common.dll": {}
-      },
-      "contentFiles": {
-        "bin/Debug/Common.pdb": {
-          "buildAction": "None",
-          "codeLanguage": "any",
-          "copyToOutput": true
-        }
-      }
-    },
     "EstudioCapra.Backend/1.0.0": {
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",

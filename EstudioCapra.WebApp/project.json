@@ -31,9 +31,6 @@
         "EstudioCapra.Backend": {
           "target": "project"
         },
-        "EstudioCapra.Common": {
-          "target": "project"
-        },
         "EstudioCapra.Entity": {
           "target": "project"
         },
