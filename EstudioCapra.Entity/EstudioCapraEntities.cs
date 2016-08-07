@@ -1,13 +1,14 @@
 ﻿namespace EstudioCapra.Entity
 {
+    using System;
     using System.Data.Entity;
-    using Common;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()
-            : base(DbConnectionUtitly.GetConnectionStringName())
-            //: base("data source=NOTEBOOK-LEO;initial catalog=EstudioCapra;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base(Common.DbConnectionUtitly.GetConnectionStringName())
         {
         }
 
@@ -18,17 +19,17 @@
         public virtual DbSet<Etapa> Etapa { get; set; }
         public virtual DbSet<EtapaRecursoFisico> EtapaRecursoFisico { get; set; }
         public virtual DbSet<EtapaServicio> EtapaServicio { get; set; }
+        public virtual DbSet<EtapaTarea> EtapaTarea { get; set; }
         public virtual DbSet<ObjetoMultimedia> ObjetoMultimedia { get; set; }
         public virtual DbSet<RecursoFisico> RecursoFisico { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Servicio> Servicio { get; set; }
+        public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<TipoServicio> TipoServicio { get; set; }
         public virtual DbSet<TipoTarea> TipoTarea { get; set; }
         public virtual DbSet<EtapaObjectoMultimedia> EtapaObjectoMultimedia { get; set; }
-        public virtual DbSet<EtapaTarea> EtapaTarea { get; set; }
         public virtual DbSet<ItemMenu> ItemMenu { get; set; }
         public virtual DbSet<RoleMenu> RoleMenu { get; set; }
-        public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<TareaEmpleado> TareaEmpleado { get; set; }
         public virtual DbSet<TipoRecursoFisico> TipoRecursoFisico { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
@@ -55,6 +56,11 @@
             modelBuilder.Entity<Cliente>()
                 .Property(e => e.Telefono2)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(e => e.Contrato)
+                .WithRequired(e => e.Cliente)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Contrato>()
                 .Property(e => e.Costo)
@@ -176,8 +182,25 @@
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Servicio>()
+                .Property(e => e.Nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Servicio>()
                 .HasMany(e => e.Contrato)
                 .WithRequired(e => e.Servicio)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Tarea>()
+                .Property(e => e.Nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tarea>()
+                .Property(e => e.Descripcion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tarea>()
+                .HasMany(e => e.EtapaTarea)
+                .WithRequired(e => e.Tarea)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TipoServicio>()
@@ -248,14 +271,6 @@
 
             modelBuilder.Entity<ItemMenu>()
                 .Property(e => e.Parametros)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Tarea>()
-                .Property(e => e.Nombre)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Tarea>()
-                .Property(e => e.Descripcion)
                 .IsUnicode(false);
 
             modelBuilder.Entity<TareaEmpleado>()

@@ -16,7 +16,7 @@ namespace EstudioCapra.Backend.Repository
 
         public List<EtapaTarea> GetAll()
         {
-            return (from x in _context.EtapaTarea select x).ToList();
+            return (from x in _context.EtapaTarea select x).DefaultIfEmpty().ToList();
         }
 
         public void Add(EtapaTarea item)

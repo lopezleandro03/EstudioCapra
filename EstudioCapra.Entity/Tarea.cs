@@ -9,34 +9,34 @@ namespace EstudioCapra.Entity
     [Table("Tarea")]
     public partial class Tarea
     {
-        [Key]
-        [Column(Order = 0)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tarea()
+        {
+            EtapaTarea = new HashSet<EtapaTarea>();
+        }
+
         public int TareaId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TipoTareaId { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(200)]
         public string Nombre { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
+        [Required]
         [StringLength(4000)]
         public string Descripcion { get; set; }
 
-        [Key]
-        [Column(Order = 4, TypeName = "date")]
+        [Column(TypeName = "date")]
         public DateTime FechaInicio { get; set; }
 
-        [Key]
-        [Column(Order = 5, TypeName = "date")]
+        [Column(TypeName = "date")]
         public DateTime FechaFin { get; set; }
 
         public int? TareaPadreId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EtapaTarea> EtapaTarea { get; set; }
 
         public virtual TipoTarea TipoTarea { get; set; }
     }

@@ -31,7 +31,7 @@ namespace EstudioCapra.Controllers
                                 FechaInicio = x.FechaInicio,
                                 NombreCiente = x.Cliente.Nombre,
                                 ApellidoCiente = x.Cliente.Apellido,
-                                DescripcionServicio = x.Servicio.TipoServicio.Descripcion
+                                DescripcionServicio = x.Servicio.Nombre
                             };
 
                 return View(model);

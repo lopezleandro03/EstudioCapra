@@ -30,7 +30,8 @@ namespace EstudioCapra.Entity
         [Column(TypeName = "date")]
         public DateTime FechaCalculoSaldo { get; set; }
 
-        public virtual Servicio Servicio { get; set; }
         public virtual Cliente Cliente { get; set; }
+
+        public virtual Servicio Servicio { get; set; }
     }
 }

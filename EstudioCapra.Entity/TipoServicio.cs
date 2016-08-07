@@ -15,7 +15,6 @@ namespace EstudioCapra.Entity
             Servicio = new HashSet<Servicio>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TipoServicioId { get; set; }
 
         [Required]

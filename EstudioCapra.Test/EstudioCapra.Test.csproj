@@ -54,7 +54,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -62,6 +64,7 @@
     <Compile Include="GlobalTest.cs" />
     <Compile Include="UnitOfWorkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TareaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstudioCapra.Backend\EstudioCapra.Backend.csproj">

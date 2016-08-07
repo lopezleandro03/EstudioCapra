@@ -9,7 +9,12 @@ namespace EstudioCapra.Entity
     [Table("Cliente")]
     public partial class Cliente
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cliente()
+        {
+            Contrato = new HashSet<Contrato>();
+        }
+
         public int ClienteId { get; set; }
 
         [Required]
@@ -32,5 +37,8 @@ namespace EstudioCapra.Entity
         public string Telefono2 { get; set; }
 
         public int? UserId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contrato> Contrato { get; set; }
     }
 }
