@@ -31,11 +31,35 @@ namespace EstudioCapra.Backend
             }
         }
 
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
         public ServicioRepository ServicioRepository
         {
             get
             {
-
                 if (this._servicioRepository == null)
                 {
                     this._servicioRepository = new ServicioRepository(_context);

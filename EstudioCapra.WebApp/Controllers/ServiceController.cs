@@ -34,7 +34,7 @@ namespace EstudioCapra.Controllers
                                 DescripcionServicio = x.Servicio.Nombre
                             };
 
-                return View(model);
+                return PartialView(model);
             }
             catch (Exception ex)
             {

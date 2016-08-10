@@ -3,106 +3,110 @@
 @{
     ViewBag.Title = "Details";
 }
+<!-- BEGIN BREADCRUMBS -->
+<div class="breadcrumbs">
+    <h1>Service</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">Create</a>
+        </li>
+        <li class="active">Create</li>
+    </ol>
+</div>
+<!-- END BREADCRUMBS -->
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="portlet-body">
 
-<div class="row">
+    <div class="font-dark bold uppercase">DETALLE</div>
+
     <div class="col-md-6">
-        <h2>Detalle de Servicio</h2>
         <h4>@Html.DisplayFor(model => model.NombreServicio)</h4>
         <h5>@Html.DisplayFor(model => model.DescripcionServicio)</h5>
         <h6>@Html.DisplayFor(model => model.FechaInicioContrato)</h6>
 
-        
     </div>
     <div class="col-md-6">
-        <hr />
         <h4>@Html.DisplayFor(model => model.ApellidoCiente) @Html.DisplayFor(model => model.NombreCiente) </h4>
         <h5>@Html.DisplayFor(model => model.DireccionCiente)</h5>
-        <hr />
+
     </div>
 </div>
-    
+
+<hr />
+<br />
+<div class="portlet-body">
+    <div class="mt-element-step">
+        <div class="row step-line">
+            <div class="mt-step-desc">
+                <div class="font-dark bold uppercase">ETAPAS</div>
+                <br />
+            </div>
+
+            @foreach (var item in Model.ListaEtapas)
+            {
+                <div class="col-md-2 mt-step-col done">
+                    <div class="mt-step-number bg-white">1</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">@Html.DisplayFor(modelItem => item.NombreEtapa)</div>
+                    <div class="mt-step-content font-grey-cascade">@Html.DisplayFor(modelItem => item.DescripcionEtapa)</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 <hr />
 
-<div class=" row">
-    @foreach (var item in Model.ListaEtapas)
-    {
-        <div id="@item.IdEtapa" class="col-lg-3 col-md-6 estado">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">@Html.DisplayFor(modelItem => item.NombreEtapa)</div>
-                            <div>@Html.DisplayFor(modelItem => item.DescripcionEtapa)</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    }
-   
-   
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<div class="row">
-    @foreach (var item in Model.ListaEtapas)
-{
-    <div id="table_@item.IdEtapa" class="col-lg-6 tareaTable">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @item.NombreEtapa
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Tarea</th>
-                                <th>Descripcion</th>
-                                <th>Inicio</th>
-                                <th>Fin</th>
-                                <th>Tipo</th>
-                                <th>Empleado</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var tarea in item.ListaTareas)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
-                                    <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
-                                    <td>@Html.DisplayFor(modeltarea => tarea.FechaInicioTarea)</td>
-                                    <td>@Html.DisplayFor(modeltarea => tarea.FechaFinTarea)</td>
-                                    <td>@Html.DisplayFor(modeltarea => tarea.NombreTipoTarea)</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.table-responsive -->
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-    </div>
-}
-</div>
+<div class="portlet-body">
+    <div class="font-dark bold uppercase">TAREAS</div>
+    <br />
 
+    <div class="row">
+        @foreach (var item in Model.ListaEtapas)
+            {
+            <div id="table_@item.IdEtapa" class="col-lg-6 tareaTable">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @item.NombreEtapa
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tarea</th>
+                                        <th>Descripcion</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Tipo</th>
+                                        <th>Empleado</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var tarea in item.ListaTareas)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
+                                            <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
+                                            <td>@Html.DisplayFor(modeltarea => tarea.FechaInicioTarea)</td>
+                                            <td>@Html.DisplayFor(modeltarea => tarea.FechaFinTarea)</td>
+                                            <td>@Html.DisplayFor(modeltarea => tarea.NombreTipoTarea)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        }
+    </div>
+</div>
+</div>
 <script>
     $(".estado").click(function () {
         $(".tareaTable").hide();

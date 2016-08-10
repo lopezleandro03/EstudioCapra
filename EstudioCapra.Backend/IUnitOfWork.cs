@@ -17,5 +17,9 @@ namespace EstudioCapra.Backend
         EtapaServicioRepository EtapaServicioRepository { get;  }
         EtapaTareaRepository EtapaTareaRepository { get; }
         TareaEmpleadoRepository TareaEmpleadoRepository { get;  }
+
+        void Save();
+        void Dispose();
+
     }
 }
