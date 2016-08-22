@@ -9,20 +9,11 @@ namespace EstudioCapra.Entity
     [Table("ObjetoMultimedia")]
     public partial class ObjetoMultimedia
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ObjetoMultimedia()
-        {
-            EtapaObjectoMultimedia = new HashSet<EtapaObjectoMultimedia>();
-        }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ObjetoMultimediaId { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Servidor { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Directorio { get; set; }
 
@@ -37,7 +28,8 @@ namespace EstudioCapra.Entity
         [Required]
         public byte[] DatosComprimidos { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaObjectoMultimedia> EtapaObjectoMultimedia { get; set; }
+        public int? EtapaId { get; set; }
+
+        public virtual Etapa Etapa { get; set; }
     }
 }

@@ -7,7 +7,11 @@ namespace EstudioCapra.Backend.Repository
 {
     public class TareaEmpleadoRepository
     {
-        private EstudioCapraEntities _context { get; set; }
+        private EstudioCapraEntities _context
+        {
+            get;
+            set;
+        }
 
         public TareaEmpleadoRepository(EstudioCapraEntities context)
         {
@@ -16,14 +20,15 @@ namespace EstudioCapra.Backend.Repository
 
         public List<TareaEmpleado> GetAll()
         {
-            return (from x in _context.TareaEmpleado select x).ToList();
+            return (from x in this._context.TareaEmpleado
+                    select x).ToList<TareaEmpleado>();
         }
 
         public void Add(TareaEmpleado item)
         {
             try
             {
-                _context.TareaEmpleado.Add(item);
+                this._context.TareaEmpleado.Add(item);
             }
             catch (Exception ex)
             {
@@ -35,7 +40,7 @@ namespace EstudioCapra.Backend.Repository
         {
             try
             {
-                _context.TareaEmpleado.Remove(item);
+                this._context.TareaEmpleado.Remove(item);
             }
             catch (Exception ex)
             {

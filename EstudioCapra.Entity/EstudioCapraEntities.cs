@@ -8,7 +8,7 @@
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()
-            : base(Common.DbConnectionUtitly.GetConnectionStringName())
+            : base("name=EstudioCapraEntities")
         {
         }
 
@@ -18,8 +18,6 @@
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Etapa> Etapa { get; set; }
         public virtual DbSet<EtapaRecursoFisico> EtapaRecursoFisico { get; set; }
-        public virtual DbSet<EtapaServicio> EtapaServicio { get; set; }
-        public virtual DbSet<EtapaTarea> EtapaTarea { get; set; }
         public virtual DbSet<ObjetoMultimedia> ObjetoMultimedia { get; set; }
         public virtual DbSet<RecursoFisico> RecursoFisico { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
@@ -27,7 +25,6 @@
         public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<TipoServicio> TipoServicio { get; set; }
         public virtual DbSet<TipoTarea> TipoTarea { get; set; }
-        public virtual DbSet<EtapaObjectoMultimedia> EtapaObjectoMultimedia { get; set; }
         public virtual DbSet<ItemMenu> ItemMenu { get; set; }
         public virtual DbSet<RoleMenu> RoleMenu { get; set; }
         public virtual DbSet<TareaEmpleado> TareaEmpleado { get; set; }
@@ -108,22 +105,7 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<Etapa>()
-                .HasMany(e => e.EtapaObjectoMultimedia)
-                .WithRequired(e => e.Etapa)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Etapa>()
-                .HasMany(e => e.EtapaRecursoFisico)
-                .WithRequired(e => e.Etapa)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Etapa>()
-                .HasMany(e => e.EtapaServicio)
-                .WithRequired(e => e.Etapa)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Etapa>()
-                .HasMany(e => e.EtapaTarea)
+                .HasMany(e => e.Tarea)
                 .WithRequired(e => e.Etapa)
                 .WillCascadeOnDelete(false);
 
@@ -190,6 +172,11 @@
                 .WithRequired(e => e.Servicio)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Servicio>()
+                .HasMany(e => e.Etapa)
+                .WithRequired(e => e.Servicio)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Tarea>()
                 .Property(e => e.Nombre)
                 .IsUnicode(false);
@@ -199,7 +186,7 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<Tarea>()
-                .HasMany(e => e.EtapaTarea)
+                .HasMany(e => e.TareaEmpleado)
                 .WithRequired(e => e.Tarea)
                 .WillCascadeOnDelete(false);
 
@@ -274,7 +261,7 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<TareaEmpleado>()
-                .Property(e => e.Status)
+                .Property(e => e.Estado)
                 .IsUnicode(false);
 
             modelBuilder.Entity<TipoRecursoFisico>()

@@ -11,23 +11,21 @@ namespace EstudioCapra.Entity
     {
         [Key]
         [Column(Order = 0)]
-        public long id { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TareaId { get; set; }
 
         [Key]
-        [Column(Order = 2)]
+        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EmpleadoId { get; set; }
 
         [Key]
-        [Column(Order = 3)]
+        [Column(Order = 2)]
         [StringLength(50)]
-        public string Status { get; set; }
+        public string Estado { get; set; }
 
         public virtual Empleado Empleado { get; set; }
+
+        public virtual Tarea Tarea { get; set; }
     }
 }

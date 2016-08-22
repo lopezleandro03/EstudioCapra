@@ -56,11 +56,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ContratoRepository.cs" />
-    <Compile Include="Repository\EtapaEmpleado.cs" />
-    <Compile Include="Repository\EtapaServicioRepository.cs" />
+    <Compile Include="Repository\EmpleadoRepository.cs" />
+    <Compile Include="Repository\ObjetoMultimediaRepository.cs" />
     <Compile Include="Repository\ServicioRepository.cs" />
-    <Compile Include="Repository\EtapaTareaRepository.cs" />
+    <Compile Include="Repository\TareaEmpleadoRepository.cs" />
+    <Compile Include="Repository\TareaRepository.cs" />
     <Compile Include="Repository\TipoServicioRepository.cs" />
+    <Compile Include="Repository\TipoTareaRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

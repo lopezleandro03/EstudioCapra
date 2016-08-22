@@ -13,6 +13,7 @@ namespace EstudioCapra.Entity
         public Servicio()
         {
             Contrato = new HashSet<Contrato>();
+            Etapa = new HashSet<Etapa>();
         }
 
         public int ServicioId { get; set; }
@@ -24,6 +25,9 @@ namespace EstudioCapra.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contrato> Contrato { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Etapa> Etapa { get; set; }
 
         public virtual TipoServicio TipoServicio { get; set; }
     }

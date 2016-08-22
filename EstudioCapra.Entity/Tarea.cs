@@ -12,10 +12,12 @@ namespace EstudioCapra.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tarea()
         {
-            EtapaTarea = new HashSet<EtapaTarea>();
+            TareaEmpleado = new HashSet<TareaEmpleado>();
         }
 
         public int TareaId { get; set; }
+
+        public int EtapaId { get; set; }
 
         public int TipoTareaId { get; set; }
 
@@ -35,9 +37,11 @@ namespace EstudioCapra.Entity
 
         public int? TareaPadreId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaTarea> EtapaTarea { get; set; }
+        public virtual Etapa Etapa { get; set; }
 
         public virtual TipoTarea TipoTarea { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TareaEmpleado> TareaEmpleado { get; set; }
     }
 }

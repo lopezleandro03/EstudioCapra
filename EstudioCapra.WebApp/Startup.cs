@@ -30,6 +30,8 @@ namespace EstudioCapra.WebApp
         {
             // Add framework services.
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
@@ -50,6 +52,8 @@ namespace EstudioCapra.WebApp
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

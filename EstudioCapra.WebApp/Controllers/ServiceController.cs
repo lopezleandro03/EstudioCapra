@@ -60,28 +60,28 @@ namespace EstudioCapra.Controllers
                              DireccionCiente = x.Cliente.Direccion,
                              ApellidoCiente = x.Cliente.Apellido,
                              FechaInicioContrato = x.FechaInicio,
-                             ListaEtapas = (from es in _UnitOfWork.EtapaServicioRepository.GetAll()
-                                            where es.ServicioId == x.ServicioId
+                             ListaEtapas = (from e in x.Servicio.Etapa
                                             select new EtapaModel()
                                             {
-                                                IdEtapa = es.EtapaId,
-                                                NombreEtapa = es.Etapa.Nombre,
-                                                DescripcionEtapa = es.Etapa.Descripcion,
-                                                FechaInicioEtapa = es.Etapa.FechaInicio,
-                                                FechaFinEtapa = es.Etapa.FechaFin,
-                                                ListaTareas = (from et in _UnitOfWork.EtapaTareaRepository.GetAll()
-                                                               where et.EtapaId == es.EtapaId
+                                                IdEtapa = e.EtapaId,
+                                                NombreEtapa = e.Nombre,
+                                                DescripcionEtapa = e.Descripcion,
+                                                FechaInicioEtapa = e.FechaInicio,
+                                                FechaFinEtapa = e.FechaFin,
+                                                ListaIdObjetoMultimedia = (from o in e.ObjetoMultimedia
+                                                                           select o.ObjetoMultimediaId).ToList(),
+                                                ListaTareas = (from t in e.Tarea
                                                                select new TareaModel()
                                                                {
-                                                                   IdTarea = et.TareaId,
-                                                                   NombreTarea = et.Tarea.Nombre,
-                                                                   DescripcionTarea = et.Tarea.Descripcion,
-                                                                   FechaInicioTarea = et.Tarea.FechaInicio,
-                                                                   FechaFinTarea = et.Tarea.FechaFin,
-                                                                   idTipoTarea = et.Tarea.TipoTareaId,
-                                                                   TemplateTarea = et.Tarea.TipoTarea.TareaTemplate,
+                                                                   IdTarea = t.TareaId,
+                                                                   NombreTarea = t.Nombre,
+                                                                   DescripcionTarea = t.Descripcion,
+                                                                   FechaInicioTarea = t.FechaInicio,
+                                                                   FechaFinTarea = t.FechaFin,
+                                                                   idTipoTarea = t.TipoTareaId,
+                                                                   TemplateTarea = t.TipoTarea.TareaTemplate,
                                                                    ListEmpleado = (from te in _UnitOfWork.TareaEmpleadoRepository.GetAll()
-                                                                                   where te.TareaId == et.TareaId
+                                                                                   where te.TareaId == t.TareaId
                                                                                    select new EmpleadoModel()
                                                                                    {
                                                                                        EmpleadoId = te.EmpleadoId,
@@ -93,9 +93,14 @@ namespace EstudioCapra.Controllers
                                                                                    }).ToList()
                                                                }).ToList()
                                             }).ToList()
-
-
                          }).ToList().FirstOrDefault();
+
+            foreach (var item in model.ListaEtapas)
+                item.Estado = item.FechaFinEtapa < DateTime.Now ? "done" : (item.FechaInicioEtapa < DateTime.Now && item.FechaFinEtapa > DateTime.Now ? "active" : string.Empty);
+
+            ViewBag.IdContrato = model.IdContrato;
+            ViewBag.IdService = model.IdServicio;
+            ViewBag.EtapaColSize = Math.Truncate((decimal)12 / model.ListaEtapas.Count);
 
             return View(model);
 

@@ -22,8 +22,6 @@ namespace EstudioCapra.Entity
 
         public int? RecursoFisicoId { get; set; }
 
-        public virtual Etapa Etapa { get; set; }
-
         public virtual RecursoFisico RecursoFisico { get; set; }
     }
 }

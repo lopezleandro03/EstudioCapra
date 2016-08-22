@@ -57,10 +57,7 @@
     <Compile Include="Empleado.cs" />
     <Compile Include="EstudioCapraEntities.cs" />
     <Compile Include="Etapa.cs" />
-    <Compile Include="EtapaObjectoMultimedia.cs" />
     <Compile Include="EtapaRecursoFisico.cs" />
-    <Compile Include="EtapaServicio.cs" />
-    <Compile Include="EtapaTarea.cs" />
     <Compile Include="ItemMenu.cs" />
     <Compile Include="ObjetoMultimedia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,18 +1,153 @@
 ﻿using EstudioCapra.Backend.Repository;
 using EstudioCapra.Entity;
+using System;
 
 namespace EstudioCapra.Backend
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private EstudioCapraEntities _context { get; set; }
         private ServicioRepository _servicioRepository;
+
         private ClienteRepository _clienteRepository;
+
         private ContratoRepository _contratoRepository;
+
         private TipoServicioRepository _tipoServicioRepository;
-        private EtapaServicioRepository _etapaServicioRepository;
-        private EtapaTareaRepository _etapaTareaRepository;
+
         private TareaEmpleadoRepository _tareaEmpleadoRepository;
+
+        private ObjetoMultimediaRepository _objetoMultimediaRepository;
+
+        private TareaRepository _tareaRepository;
+
+        private TipoTareaRepository _tipoTareaRepository;
+
+        private EmpleadoRepository _empleadoRepository;
+
+        private bool disposed = false;
+
+        private EstudioCapraEntities _context
+        {
+            get;
+            set;
+        }
+
+        public ServicioRepository ServicioRepository
+        {
+            get
+            {
+                bool flag = this._servicioRepository == null;
+                if (flag)
+                {
+                    this._servicioRepository = new ServicioRepository(this._context);
+                }
+                return this._servicioRepository;
+            }
+        }
+
+        public ClienteRepository ClienteRepository
+        {
+            get
+            {
+                bool flag = this._clienteRepository == null;
+                if (flag)
+                {
+                    this._clienteRepository = new ClienteRepository(this._context);
+                }
+                return this._clienteRepository;
+            }
+        }
+
+        public ContratoRepository ContratoRepository
+        {
+            get
+            {
+                bool flag = this._contratoRepository == null;
+                if (flag)
+                {
+                    this._contratoRepository = new ContratoRepository(this._context);
+                }
+                return this._contratoRepository;
+            }
+        }
+
+        public TipoServicioRepository TipoServicioRepository
+        {
+            get
+            {
+                bool flag = this._tipoServicioRepository == null;
+                if (flag)
+                {
+                    this._tipoServicioRepository = new TipoServicioRepository(this._context);
+                }
+                return this._tipoServicioRepository;
+            }
+        }
+
+        public TareaEmpleadoRepository TareaEmpleadoRepository
+        {
+            get
+            {
+                bool flag = this._tareaEmpleadoRepository == null;
+                if (flag)
+                {
+                    this._tareaEmpleadoRepository = new TareaEmpleadoRepository(this._context);
+                }
+                return this._tareaEmpleadoRepository;
+            }
+        }
+
+        public ObjetoMultimediaRepository ObjetoMultimediaRepository
+        {
+            get
+            {
+                bool flag = this._objetoMultimediaRepository == null;
+                if (flag)
+                {
+                    this._objetoMultimediaRepository = new ObjetoMultimediaRepository(this._context);
+                }
+                return this._objetoMultimediaRepository;
+            }
+        }
+
+        public TareaRepository TareaRespository
+        {
+            get
+            {
+                bool flag = this._tareaRepository == null;
+                if (flag)
+                {
+                    this._tareaRepository = new TareaRepository(this._context);
+                }
+                return this._tareaRepository;
+            }
+        }
+
+        public TipoTareaRepository TipoTareaReposiory
+        {
+            get
+            {
+                bool flag = this._tipoTareaRepository == null;
+                if (flag)
+                {
+                    this._tipoTareaRepository = new TipoTareaRepository(this._context);
+                }
+                return this._tipoTareaRepository;
+            }
+        }
+
+        public EmpleadoRepository EmpleadoRepository
+        {
+            get
+            {
+                bool flag = this._empleadoRepository == null;
+                if (flag)
+                {
+                    this._empleadoRepository = new EmpleadoRepository(this._context);
+                }
+                return this._empleadoRepository;
+            }
+        }
 
         public UnitOfWork(EstudioCapraEntities context)
         {
@@ -25,7 +160,7 @@ namespace EstudioCapra.Backend
             {
                 this._context = new EstudioCapraEntities();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -33,111 +168,25 @@ namespace EstudioCapra.Backend
 
         public void Save()
         {
-            _context.SaveChanges();
+            this._context.SaveChanges();
         }
-
-        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            bool flag = !this.disposed;
+            if (flag)
             {
                 if (disposing)
                 {
-                    _context.Dispose();
+                    this._context.Dispose();
                 }
             }
-
             this.disposed = true;
         }
 
         public void Dispose()
         {
-            Dispose(true);
-        }
-
-        public ServicioRepository ServicioRepository
-        {
-            get
-            {
-                if (this._servicioRepository == null)
-                {
-                    this._servicioRepository = new ServicioRepository(_context);
-                }
-                return _servicioRepository;
-            }
-        }
-        public ClienteRepository ClienteRepository
-        {
-            get
-            {
-
-                if (this._clienteRepository == null)
-                {
-                    this._clienteRepository = new ClienteRepository(_context);
-                }
-                return _clienteRepository;
-            }
-        }
-        public ContratoRepository ContratoRepository
-        {
-            get
-            {
-
-                if (this._contratoRepository == null)
-                {
-                    this._contratoRepository = new ContratoRepository(_context);
-                }
-                return _contratoRepository;
-            }
-        }
-        public TipoServicioRepository TipoServicioRepository
-        {
-            get
-            {
-
-                if (this._tipoServicioRepository == null)
-                {
-                    this._tipoServicioRepository = new TipoServicioRepository(_context);
-                }
-                return _tipoServicioRepository;
-            }
-        }
-        public EtapaServicioRepository EtapaServicioRepository
-        {
-            get
-            {
-
-                if (this._etapaServicioRepository == null)
-                {
-                    this._etapaServicioRepository = new EtapaServicioRepository(_context);
-                }
-                return _etapaServicioRepository;
-            }
-        }
-        public EtapaTareaRepository EtapaTareaRepository
-        {
-            get
-            {
-                if (this._etapaTareaRepository == null)
-                {
-                    this._etapaTareaRepository = new EtapaTareaRepository(_context);
-                }
-                return _etapaTareaRepository;
-            }
-
-        }
-        public TareaEmpleadoRepository TareaEmpleadoRepository
-        {
-            get
-            {
-                if (this._tareaEmpleadoRepository == null)
-                {
-                    this._tareaEmpleadoRepository = new TareaEmpleadoRepository(_context);
-                }
-                return _tareaEmpleadoRepository;
-            }
-
+            this.Dispose(true);
         }
     }
 }

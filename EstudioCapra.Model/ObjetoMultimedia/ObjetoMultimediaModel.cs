@@ -1,53 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 
 namespace EstudioCapra.Models
 {
-    public class EtapaModel
+    public class ObjetoMultimediaModel
     {
-        public int IdEtapa
+        public int ObjetoMultimediaId
         {
             get;
             set;
         }
 
-        public string NombreEtapa
+        public int EtapaId
         {
             get;
             set;
         }
 
-        public string DescripcionEtapa
+        public string Servidor
         {
             get;
             set;
         }
 
-        public DateTime FechaInicioEtapa
+        public string Directorio
         {
             get;
             set;
         }
 
-        public DateTime? FechaFinEtapa
+        public string Nombre
         {
             get;
             set;
         }
 
-        public List<TareaModel> ListaTareas
+        public string Tipo
         {
             get;
             set;
         }
 
-        public List<int> ListaIdObjetoMultimedia
+        public IFormFile Archivo
         {
             get;
             set;
         }
 
-        public string Estado
+        public int ContratoId
         {
             get;
             set;

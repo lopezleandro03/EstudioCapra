@@ -12,13 +12,13 @@ namespace EstudioCapra.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Etapa()
         {
-            EtapaObjectoMultimedia = new HashSet<EtapaObjectoMultimedia>();
-            EtapaRecursoFisico = new HashSet<EtapaRecursoFisico>();
-            EtapaServicio = new HashSet<EtapaServicio>();
-            EtapaTarea = new HashSet<EtapaTarea>();
+            ObjetoMultimedia = new HashSet<ObjetoMultimedia>();
+            Tarea = new HashSet<Tarea>();
         }
 
         public int EtapaId { get; set; }
+
+        public int ServicioId { get; set; }
 
         [Required]
         [StringLength(200)]
@@ -34,16 +34,12 @@ namespace EstudioCapra.Entity
         [Column(TypeName = "date")]
         public DateTime? FechaFin { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaObjectoMultimedia> EtapaObjectoMultimedia { get; set; }
+        public virtual Servicio Servicio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaRecursoFisico> EtapaRecursoFisico { get; set; }
+        public virtual ICollection<ObjetoMultimedia> ObjetoMultimedia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaServicio> EtapaServicio { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EtapaTarea> EtapaTarea { get; set; }
+        public virtual ICollection<Tarea> Tarea { get; set; }
     }
 }

@@ -5,25 +5,30 @@ using System.Linq;
 
 namespace EstudioCapra.Backend.Repository
 {
-    public class EtapaTareaRepository
+    public class TareaRepository
     {
-        private EstudioCapraEntities _context { get; set; }
+        private EstudioCapraEntities _context
+        {
+            get;
+            set;
+        }
 
-        public EtapaTareaRepository(EstudioCapraEntities context)
+        public TareaRepository(EstudioCapraEntities context)
         {
             this._context = context;
         }
 
-        public List<EtapaTarea> GetAll()
+        public List<Tarea> GetAll()
         {
-            return (from x in _context.EtapaTarea select x).DefaultIfEmpty().ToList();
+            return (from x in this._context.Tarea
+                    select x).ToList<Tarea>();
         }
 
-        public void Add(EtapaTarea item)
+        public void Add(Tarea item)
         {
             try
             {
-                _context.EtapaTarea.Add(item);
+                this._context.Tarea.Add(item);
             }
             catch (Exception ex)
             {
@@ -31,11 +36,11 @@ namespace EstudioCapra.Backend.Repository
             }
         }
 
-        public void Delete(EtapaTarea item)
+        public void Delete(Tarea item)
         {
             try
             {
-                _context.EtapaTarea.Remove(item);
+                this._context.Tarea.Remove(item);
             }
             catch (Exception ex)
             {
@@ -44,4 +49,3 @@ namespace EstudioCapra.Backend.Repository
         }
     }
 }
-
