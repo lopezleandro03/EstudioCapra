@@ -9,41 +9,34 @@ namespace EstudioCapra.Entity
     [Table("ItemMenu")]
     public partial class ItemMenu
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ItemMenu()
+        {
+            Rol = new HashSet<Rol>();
+        }
+
         public int ItemMenuId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(100)]
         public string Name { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Orden { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
         public bool Estado { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ItemMenuPadreId { get; set; }
+        public int? ItemMenuPadreId { get; set; }
 
-        [Key]
-        [Column(Order = 5)]
         [StringLength(50)]
         public string Controlador { get; set; }
 
-        [Key]
-        [Column(Order = 6)]
         [StringLength(50)]
         public string Accion { get; set; }
 
         [StringLength(500)]
         public string Parametros { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rol> Rol { get; set; }
     }
 }

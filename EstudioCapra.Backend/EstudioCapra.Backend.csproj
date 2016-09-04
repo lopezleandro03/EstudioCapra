@@ -63,6 +63,7 @@
     <Compile Include="Repository\TareaRepository.cs" />
     <Compile Include="Repository\TipoServicioRepository.cs" />
     <Compile Include="Repository\TipoTareaRepository.cs" />
+    <Compile Include="Repository\UsuarioRespository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

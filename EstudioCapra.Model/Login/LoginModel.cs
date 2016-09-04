@@ -4,13 +4,13 @@ namespace EstudioCapra.Model.Login
 {
     public class LoginModel
     {
-        public string user
+        public string Email
         {
             get;
             set;
         }
 
-        public string password
+        public string Contraseña
         {
             get;
             set;

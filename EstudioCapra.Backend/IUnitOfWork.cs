@@ -50,6 +50,11 @@ namespace EstudioCapra.Backend
             get;
         }
 
+        UsuarioRepository UsuarioRepository
+        {
+            get;
+        }
+
         void Save();
 
         void Dispose();

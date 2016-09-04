@@ -24,6 +24,8 @@ namespace EstudioCapra.Backend
 
         private EmpleadoRepository _empleadoRepository;
 
+        private UsuarioRepository _usuarioRepository;
+
         private bool disposed = false;
 
         private EstudioCapraEntities _context
@@ -146,6 +148,19 @@ namespace EstudioCapra.Backend
                     this._empleadoRepository = new EmpleadoRepository(this._context);
                 }
                 return this._empleadoRepository;
+            }
+        }
+
+        public UsuarioRepository UsuarioRepository
+        {
+            get
+            {
+                bool flag = this._usuarioRepository == null;
+                if (flag)
+                {
+                    this._usuarioRepository = new UsuarioRepository(this._context);
+                }
+                return this._usuarioRepository;
             }
         }
 

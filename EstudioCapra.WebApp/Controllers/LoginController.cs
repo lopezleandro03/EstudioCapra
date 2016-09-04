@@ -3,13 +3,15 @@ using EstudioCapra.Model.Login;
 using EstudioCapra.WebApp.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System;
+using System.Linq;
 
 namespace EstudioCapra.Controllers
 {
     public class LoginController : BaseController
     {
-        public LoginController(UnitOfWork unitOfWork)
+        public LoginController(IUnitOfWork unitOfWork)
         {
             base._UnitOfWork = unitOfWork;
         }
@@ -21,8 +23,21 @@ namespace EstudioCapra.Controllers
 
         public ActionResult Authenticate(LoginModel account)
         {
-            base.HttpContext.Session.SetString("USER", account.user);
-            return this.View();
+            if ((from x in _UnitOfWork.UsuarioRepository.GetAll()
+                 select x).ToList().Exists(x => x.Email == account.Email && x.Contraseña == account.Contraseña))
+            {
+                base.HttpContext.Session.SetString("USER", account.Email);
+                
+                return this.RedirectToAction("Index", new RouteValueDictionary(new
+                {
+                    controller = "Home",
+                    action = "Index"
+                }));
+            }
+            else
+            {
+                return this.RedirectToAction("Index");
+            }
         }
 
         public PartialViewResult Create()
@@ -37,6 +52,12 @@ namespace EstudioCapra.Controllers
             try
             {
                 result = this.RedirectToAction("Index");
+
+                return this.RedirectToAction("Index", new RouteValueDictionary(new
+                {
+                    controller = "Home",
+                    action = "Index"
+                }));
             }
             catch
             {

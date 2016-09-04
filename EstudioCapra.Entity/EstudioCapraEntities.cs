@@ -4,11 +4,12 @@
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Common;
 
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()
-            : base("name=EstudioCapraEntities")
+            : base(DbConnectionUtitly.GetConnectionStringName())
         {
         }
 
@@ -18,6 +19,7 @@
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Etapa> Etapa { get; set; }
         public virtual DbSet<EtapaRecursoFisico> EtapaRecursoFisico { get; set; }
+        public virtual DbSet<ItemMenu> ItemMenu { get; set; }
         public virtual DbSet<ObjetoMultimedia> ObjetoMultimedia { get; set; }
         public virtual DbSet<RecursoFisico> RecursoFisico { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
@@ -25,8 +27,6 @@
         public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<TipoServicio> TipoServicio { get; set; }
         public virtual DbSet<TipoTarea> TipoTarea { get; set; }
-        public virtual DbSet<ItemMenu> ItemMenu { get; set; }
-        public virtual DbSet<RoleMenu> RoleMenu { get; set; }
         public virtual DbSet<TareaEmpleado> TareaEmpleado { get; set; }
         public virtual DbSet<TipoRecursoFisico> TipoRecursoFisico { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
@@ -113,6 +113,27 @@
                 .Property(e => e.Status)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<ItemMenu>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ItemMenu>()
+                .Property(e => e.Controlador)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ItemMenu>()
+                .Property(e => e.Accion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ItemMenu>()
+                .Property(e => e.Parametros)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ItemMenu>()
+                .HasMany(e => e.Rol)
+                .WithMany(e => e.ItemMenu)
+                .Map(m => m.ToTable("RoleMenu").MapLeftKey("ItemMenuId").MapRightKey("RolId"));
+
             modelBuilder.Entity<ObjetoMultimedia>()
                 .Property(e => e.Servidor)
                 .IsUnicode(false);
@@ -152,11 +173,6 @@
             modelBuilder.Entity<Rol>()
                 .Property(e => e.Descripcion)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Rol>()
-                .HasMany(e => e.RoleMenu)
-                .WithRequired(e => e.Rol)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Rol>()
                 .HasMany(e => e.UsuarioRol)
@@ -243,22 +259,6 @@
                 .HasMany(e => e.Tarea)
                 .WithRequired(e => e.TipoTarea)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<ItemMenu>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ItemMenu>()
-                .Property(e => e.Controlador)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ItemMenu>()
-                .Property(e => e.Accion)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ItemMenu>()
-                .Property(e => e.Parametros)
-                .IsUnicode(false);
 
             modelBuilder.Entity<TareaEmpleado>()
                 .Property(e => e.Estado)

@@ -1,0 +1,197 @@
+﻿@{
+    Layout = null;
+}
+<div class="breadcrumbs">
+    <h1>Dashboard</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Dashboard</li>
+    </ol>
+</div>
+<!-- END BREADCRUMBS -->
+<!-- BEGIN PAGE BASE CONTENT -->
+<!-- BEGIN DASHBOARD STATS 1-->
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+            <div class="visual">
+                <i class="fa fa-comments"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="@ViewBag.ContratosNuevos">@ViewBag.ContratosNuevos</span>
+                </div>
+                <div class="desc"> Nuevos Servicios </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="@ViewBag.TareasActivas">@ViewBag.TareasActivas</span>
+                </div>
+                <div class="desc"> Tareas en curso </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+            <div class="visual">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="549">549</span>
+                </div>
+                <div class="desc"> New Orders </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    +
+                    <span data-counter="counterup" data-value="89">89</span>%
+                </div>
+                <div class="desc"> Brand Popularity </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="clearfix"></div>
+<!-- END DASHBOARD STATS 1-->
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-bar-chart font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Site Visits</span>
+                    <span class="caption-helper">weekly stats...</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <label class="btn red btn-outline btn-circle btn-sm active">
+                            <input type="radio" name="options" class="toggle" id="option1">New
+                        </label>
+                        <label class="btn red btn-outline btn-circle btn-sm">
+                            <input type="radio" name="options" class="toggle" id="option2">Returning
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="site_statistics_loading" style="display: none;">
+                    <img src="../assets/global/img/loading.gif" alt="loading">
+                </div>
+                <div id="site_statistics_content" class="display-none" style="display: block;">
+                    <div id="site_statistics" class="chart" style="padding: 0px; position: relative;"> <canvas class="flot-base" width="590" height="225" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 787px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 12px; text-align: center;">02/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 103px; text-align: center;">03/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 195px; text-align: center;">04/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 286px; text-align: center;">05/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 378px; text-align: center;">06/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 469px; text-align: center;">07/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 561px; text-align: center;">08/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 652px; text-align: center;">09/2013</div><div style="position: absolute; max-width: 87px; top: 286px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 744px; text-align: center;">10/2013</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; top: 275px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 21px; text-align: right;">0</div><div style="position: absolute; top: 221px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">1000</div><div style="position: absolute; top: 167px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">2000</div><div style="position: absolute; top: 114px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">3000</div><div style="position: absolute; top: 60px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">4000</div><div style="position: absolute; top: 7px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">5000</div></div></div><canvas class="flot-overlay" width="590" height="225" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 787px; height: 300px;"></canvas></div>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+    <div class="col-md-6 col-sm-6">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-share font-red-sunglo hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Revenue</span>
+                    <span class="caption-helper">monthly stats...</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            Filter Range
+                            <span class="fa fa-angle-down"> </span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="javascript:;">
+                                    Q1 2014
+                                    <span class="label label-sm label-default"> past </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    Q2 2014
+                                    <span class="label label-sm label-default"> past </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="javascript:;">
+                                    Q3 2014
+                                    <span class="label label-sm label-success"> current </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    Q4 2014
+                                    <span class="label label-sm label-warning"> upcoming </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="site_activities_loading" style="display: none;">
+                    <img src="../assets/global/img/loading.gif" alt="loading">
+                </div>
+                <div id="site_activities_content" class="display-none" style="display: block;">
+                    <div id="site_activities" style="height: 228px; padding: 0px; position: relative;"> <canvas class="flot-base" width="590" height="171" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 787px; height: 228px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 21px; text-align: center;">DEC</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 105px; text-align: center;">JAN</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 186px; text-align: center;">FEB</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 268px; text-align: center;">MAR</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 350px; text-align: center;">APR</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 433px; text-align: center;">MAY</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 517px; text-align: center;">JUN</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 599px; text-align: center;">JUL</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 680px; text-align: center;">AUG</div><div style="position: absolute; max-width: 78px; top: 210px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 18px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 762px; text-align: center;">SEP</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div style="position: absolute; top: 199px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 21px; text-align: right;">0</div><div style="position: absolute; top: 150px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 8px; text-align: right;">500</div><div style="position: absolute; top: 101px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">1000</div><div style="position: absolute; top: 52px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">1500</div><div style="position: absolute; top: 4px; font-style: normal; font-variant: small-caps; font-weight: 400; font-stretch: normal; font-size: 11px; line-height: 14px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(111, 123, 138); left: 1px; text-align: right;">2000</div></div></div><canvas class="flot-overlay" width="590" height="171" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 787px; height: 228px;"></canvas></div>
+                </div>
+                <div style="margin: 20px 0 10px 30px">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-success"> Revenue: </span>
+                            <h3>$13,234</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-info"> Tax: </span>
+                            <h3>$134,900</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-danger"> Shipment: </span>
+                            <h3>$1,134</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-warning"> Orders: </span>
+                            <h3>235090</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light calendar bordered">
+            <div class="portlet-title ">
+                <div class="caption">
+                    <i class="icon-calendar font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Feeds</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="calendar" class="fc fc-ltr fc-unthemed"><div class="fc-toolbar"><div class="fc-left"><h2>August 2016</h2></div><div class="fc-right"><div class="fc-button-group"><button type="button" class="fc-prev-button fc-button fc-state-default fc-corner-left"><span class="fc-icon fc-icon-left-single-arrow"></span></button><button type="button" class="fc-next-button fc-button fc-state-default"><span class="fc-icon fc-icon-right-single-arrow"></span></button><button type="button" class="fc-today-button fc-button fc-state-default fc-state-disabled" disabled="disabled">today</button><button type="button" class="fc-month-button fc-button fc-state-default fc-state-active">month</button><button type="button" class="fc-agendaWeek-button fc-button fc-state-default">week</button><button type="button" class="fc-agendaDay-button fc-button fc-state-default fc-corner-right">day</button></div></div><div class="fc-center"></div><div class="fc-clear"></div></div><div class="fc-view-container" style=""><div class="fc-view fc-month-view fc-basic-view"><table><thead class="fc-head"><tr><td class="fc-widget-header"><div class="fc-row fc-widget-header"><table><thead><tr><th class="fc-day-header fc-widget-header fc-sun">Sun</th><th class="fc-day-header fc-widget-header fc-mon">Mon</th><th class="fc-day-header fc-widget-header fc-tue">Tue</th><th class="fc-day-header fc-widget-header fc-wed">Wed</th><th class="fc-day-header fc-widget-header fc-thu">Thu</th><th class="fc-day-header fc-widget-header fc-fri">Fri</th><th class="fc-day-header fc-widget-header fc-sat">Sat</th></tr></thead></table></div></td></tr></thead><tbody class="fc-body"><tr><td class="fc-widget-content"><div class="fc-day-grid-container"><div class="fc-day-grid"><div class="fc-row fc-week fc-widget-content" style="height: 92px;"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-other-month fc-past" data-date="2016-07-31"></td><td class="fc-day fc-widget-content fc-mon fc-past" data-date="2016-08-01"></td><td class="fc-day fc-widget-content fc-tue fc-past" data-date="2016-08-02"></td><td class="fc-day fc-widget-content fc-wed fc-past" data-date="2016-08-03"></td><td class="fc-day fc-widget-content fc-thu fc-past" data-date="2016-08-04"></td><td class="fc-day fc-widget-content fc-fri fc-past" data-date="2016-08-05"></td><td class="fc-day fc-widget-content fc-sat fc-past" data-date="2016-08-06"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-other-month fc-past" data-date="2016-07-31">31</td><td class="fc-day-number fc-mon fc-past" data-date="2016-08-01">1</td><td class="fc-day-number fc-tue fc-past" data-date="2016-08-02">2</td><td class="fc-day-number fc-wed fc-past" data-date="2016-08-03">3</td><td class="fc-day-number fc-thu fc-past" data-date="2016-08-04">4</td><td class="fc-day-number fc-fri fc-past" data-date="2016-08-05">5</td><td class="fc-day-number fc-sat fc-past" data-date="2016-08-06">6</td></tr></thead><tbody><tr><td></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" style="background-color:#F8CB00"><div class="fc-content"><span class="fc-time">12a</span> <span class="fc-title">All Day</span></div></a></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="fc-row fc-week fc-widget-content" style="height: 92px;"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-past" data-date="2016-08-07"></td><td class="fc-day fc-widget-content fc-mon fc-past" data-date="2016-08-08"></td><td class="fc-day fc-widget-content fc-tue fc-past" data-date="2016-08-09"></td><td class="fc-day fc-widget-content fc-wed fc-past" data-date="2016-08-10"></td><td class="fc-day fc-widget-content fc-thu fc-past" data-date="2016-08-11"></td><td class="fc-day fc-widget-content fc-fri fc-past" data-date="2016-08-12"></td><td class="fc-day fc-widget-content fc-sat fc-past" data-date="2016-08-13"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-past" data-date="2016-08-07">7</td><td class="fc-day-number fc-mon fc-past" data-date="2016-08-08">8</td><td class="fc-day-number fc-tue fc-past" data-date="2016-08-09">9</td><td class="fc-day-number fc-wed fc-past" data-date="2016-08-10">10</td><td class="fc-day-number fc-thu fc-past" data-date="2016-08-11">11</td><td class="fc-day-number fc-fri fc-past" data-date="2016-08-12">12</td><td class="fc-day-number fc-sat fc-past" data-date="2016-08-13">13</td></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="fc-row fc-week fc-widget-content" style="height: 92px;"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-past" data-date="2016-08-14"></td><td class="fc-day fc-widget-content fc-mon fc-past" data-date="2016-08-15"></td><td class="fc-day fc-widget-content fc-tue fc-past" data-date="2016-08-16"></td><td class="fc-day fc-widget-content fc-wed fc-past" data-date="2016-08-17"></td><td class="fc-day fc-widget-content fc-thu fc-past" data-date="2016-08-18"></td><td class="fc-day fc-widget-content fc-fri fc-past" data-date="2016-08-19"></td><td class="fc-day fc-widget-content fc-sat fc-past" data-date="2016-08-20"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-past" data-date="2016-08-14">14</td><td class="fc-day-number fc-mon fc-past" data-date="2016-08-15">15</td><td class="fc-day-number fc-tue fc-past" data-date="2016-08-16">16</td><td class="fc-day-number fc-wed fc-past" data-date="2016-08-17">17</td><td class="fc-day-number fc-thu fc-past" data-date="2016-08-18">18</td><td class="fc-day-number fc-fri fc-past" data-date="2016-08-19">19</td><td class="fc-day-number fc-sat fc-past" data-date="2016-08-20">20</td></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-not-end fc-draggable" style="background-color:#89C4F4"><div class="fc-content"><span class="fc-time">12a</span> <span class="fc-title">Long Event</span></div></a></td></tr></tbody></table></div></div><div class="fc-row fc-week fc-widget-content"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-past" data-date="2016-08-21"></td><td class="fc-day fc-widget-content fc-mon fc-past" data-date="2016-08-22"></td><td class="fc-day fc-widget-content fc-tue fc-past" data-date="2016-08-23"></td><td class="fc-day fc-widget-content fc-wed fc-past" data-date="2016-08-24"></td><td class="fc-day fc-widget-content fc-thu fc-today fc-state-highlight" data-date="2016-08-25"></td><td class="fc-day fc-widget-content fc-fri fc-future" data-date="2016-08-26"></td><td class="fc-day fc-widget-content fc-sat fc-future" data-date="2016-08-27"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-past" data-date="2016-08-21">21</td><td class="fc-day-number fc-mon fc-past" data-date="2016-08-22">22</td><td class="fc-day-number fc-tue fc-past" data-date="2016-08-23">23</td><td class="fc-day-number fc-wed fc-past" data-date="2016-08-24">24</td><td class="fc-day-number fc-thu fc-today fc-state-highlight" data-date="2016-08-25">25</td><td class="fc-day-number fc-fri fc-future" data-date="2016-08-26">26</td><td class="fc-day-number fc-sat fc-future" data-date="2016-08-27">27</td></tr></thead><tbody><tr><td class="fc-event-container" colspan="2"><a class="fc-day-grid-event fc-h-event fc-event fc-not-start fc-end fc-draggable" style="background-color:#89C4F4"><div class="fc-content"> <span class="fc-title">Long Event</span></div></a></td><td rowspan="2"></td><td rowspan="2"></td><td class="fc-event-container" rowspan="2"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" style="background-color:#95a5a6"><div class="fc-content"><span class="fc-time">2p</span> <span class="fc-title">Lunch</span></div></a></td><td class="fc-event-container" rowspan="2"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" style="background-color:#9b59b6"><div class="fc-content"><span class="fc-time">7p</span> <span class="fc-title">Birthday</span></div></a></td><td rowspan="2"></td></tr><tr><td></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" style="background-color:#F3565D"><div class="fc-content"><span class="fc-time">4p</span> <span class="fc-title">Repeating Event</span></div></a></td></tr></tbody></table></div></div><div class="fc-row fc-week fc-widget-content" style="height: 92px;"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-future" data-date="2016-08-28"></td><td class="fc-day fc-widget-content fc-mon fc-future" data-date="2016-08-29"></td><td class="fc-day fc-widget-content fc-tue fc-future" data-date="2016-08-30"></td><td class="fc-day fc-widget-content fc-wed fc-future" data-date="2016-08-31"></td><td class="fc-day fc-widget-content fc-thu fc-other-month fc-future" data-date="2016-09-01"></td><td class="fc-day fc-widget-content fc-fri fc-other-month fc-future" data-date="2016-09-02"></td><td class="fc-day fc-widget-content fc-sat fc-other-month fc-future" data-date="2016-09-03"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-future" data-date="2016-08-28">28</td><td class="fc-day-number fc-mon fc-future" data-date="2016-08-29">29</td><td class="fc-day-number fc-tue fc-future" data-date="2016-08-30">30</td><td class="fc-day-number fc-wed fc-future" data-date="2016-08-31">31</td><td class="fc-day-number fc-thu fc-other-month fc-future" data-date="2016-09-01">1</td><td class="fc-day-number fc-fri fc-other-month fc-future" data-date="2016-09-02">2</td><td class="fc-day-number fc-sat fc-other-month fc-future" data-date="2016-09-03">3</td></tr></thead><tbody><tr><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" href="http://google.com/" style="background-color:#F8CB00"><div class="fc-content"><span class="fc-time">12a</span> <span class="fc-title">Click for Google</span></div></a></td><td></td><td></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable" style="background-color:#1bbc9b"><div class="fc-content"><span class="fc-time">4p</span> <span class="fc-title">Repeating Event</span></div></a></td><td></td><td></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end fc-draggable"><div class="fc-content"><span class="fc-time">10:30a</span> <span class="fc-title">Meeting</span></div></a></td></tr></tbody></table></div></div><div class="fc-row fc-week fc-widget-content" style="height: 95px;"><div class="fc-bg"><table><tbody><tr><td class="fc-day fc-widget-content fc-sun fc-other-month fc-future" data-date="2016-09-04"></td><td class="fc-day fc-widget-content fc-mon fc-other-month fc-future" data-date="2016-09-05"></td><td class="fc-day fc-widget-content fc-tue fc-other-month fc-future" data-date="2016-09-06"></td><td class="fc-day fc-widget-content fc-wed fc-other-month fc-future" data-date="2016-09-07"></td><td class="fc-day fc-widget-content fc-thu fc-other-month fc-future" data-date="2016-09-08"></td><td class="fc-day fc-widget-content fc-fri fc-other-month fc-future" data-date="2016-09-09"></td><td class="fc-day fc-widget-content fc-sat fc-other-month fc-future" data-date="2016-09-10"></td></tr></tbody></table></div><div class="fc-content-skeleton"><table><thead><tr><td class="fc-day-number fc-sun fc-other-month fc-future" data-date="2016-09-04">4</td><td class="fc-day-number fc-mon fc-other-month fc-future" data-date="2016-09-05">5</td><td class="fc-day-number fc-tue fc-other-month fc-future" data-date="2016-09-06">6</td><td class="fc-day-number fc-wed fc-other-month fc-future" data-date="2016-09-07">7</td><td class="fc-day-number fc-thu fc-other-month fc-future" data-date="2016-09-08">8</td><td class="fc-day-number fc-fri fc-other-month fc-future" data-date="2016-09-09">9</td><td class="fc-day-number fc-sat fc-other-month fc-future" data-date="2016-09-10">10</td></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></div></div></div></td></tr></tbody></table></div></div> </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>

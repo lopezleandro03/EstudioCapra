@@ -12,8 +12,8 @@ namespace EstudioCapra.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rol()
         {
-            RoleMenu = new HashSet<RoleMenu>();
             UsuarioRol = new HashSet<UsuarioRol>();
+            ItemMenu = new HashSet<ItemMenu>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -32,9 +32,9 @@ namespace EstudioCapra.Entity
         public string Descripcion { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleMenu> RoleMenu { get; set; }
+        public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
+        public virtual ICollection<ItemMenu> ItemMenu { get; set; }
     }
 }

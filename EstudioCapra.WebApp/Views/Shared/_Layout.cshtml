@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model 
+<!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -271,26 +272,9 @@
                     <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown dropdown-fw dropdown-fw-disabled  active open selected">
-                                <a href="javascript:;" class="text-uppercase">
+                                <a href="javascript:;" class="asyncAction text-uppercase" data-controller="Home" data-action="Dashboard">
                                     <i class="icon-home"></i> Dashboard
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-fw">
-                                    <li class="active">
-                                        <a href="index.html">
-                                            <i class="icon-bar-chart"></i> Default
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard_2.html">
-                                            <i class="icon-bulb"></i> Dashboard 2
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard_3.html">
-                                            <i class="icon-graph"></i> Dashboard 3
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="dropdown dropdown-fw dropdown-fw-disabled active selected">
                                 <a href="javascript:;" class="text-uppercase">
@@ -299,7 +283,7 @@
                                 <ul class="dropdown-menu dropdown-menu-fw">
                                     <li class="active">
                                         <a href="javascript:;" class="asyncAction" data-controller="service" data-action="index">
-                                            <i class="icon-bar-chart"></i> Buscar
+                                            <i class="icon-bar-chart"></i> Administracion
                                         </a>
                                     </li>
                                     <li>
@@ -338,22 +322,39 @@
                             </li>
                             <li class="dropdown dropdown-fw dropdown-fw-disabled  active selected">
                                 <a href="javascript:;" class="text-uppercase">
-                                    <i class="icon-home"></i> Administración
+                                    <i class="icon-home"></i> Empleados
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-fw">
                                     <li class="active">
                                         <a href="index.html">
-                                            <i class="icon-bar-chart"></i> Default
+                                            <i class="icon-bar-chart"></i> Buscar
                                         </a>
                                     </li>
                                     <li>
                                         <a href="dashboard_2.html">
-                                            <i class="icon-bulb"></i> Dashboard 2
+                                            <i class="icon-bulb"></i> Alta
                                         </a>
                                     </li>
                                     <li>
                                         <a href="dashboard_3.html">
-                                            <i class="icon-graph"></i> Dashboard 3
+                                            <i class="icon-graph"></i> Sueldos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown dropdown-fw dropdown-fw-disabled  active selected">
+                                <a href="javascript:;" class="text-uppercase">
+                                    <i class="icon-home"></i> Recursos
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-fw">
+                                    <li class="active">
+                                        <a href="index.html">
+                                            <i class="icon-bar-chart"></i> Instalaciones
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="dashboard_2.html">
+                                            <i class="icon-bulb"></i> Dispositivos
                                         </a>
                                     </li>
                                 </ul>

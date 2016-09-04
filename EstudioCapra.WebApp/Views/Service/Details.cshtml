@@ -46,7 +46,7 @@
             {
                 if (@i == 0)
                 {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col first @Model.ListaEtapas[i].Estado estado">
+                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col first @Model.ListaEtapas[i].Estado etapa">
                             <div class="mt-step-number bg-white">@(i + 1)</div>
                             <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
                             <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
@@ -54,7 +54,7 @@
                     }
                     else if (@i == Model.ListaEtapas.Count - 1)
                     {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col last @Model.ListaEtapas[i].Estado estado">
+                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col last @Model.ListaEtapas[i].Estado etapa">
                             <div class="mt-step-number bg-white">@(i + 1)</div>
                             <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
                             <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
@@ -62,7 +62,7 @@
                     }
                     else
                     {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col @Model.ListaEtapas[i].Estado estado">
+                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col @Model.ListaEtapas[i].Estado etapa">
                             <div class="mt-step-number bg-white">@(i + 1)</div>
                             <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
                             <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
@@ -162,8 +162,24 @@
     </div>
 </div>
 
+<hidden>
+    <input hidden id="contratoId" value="@ViewBag.IdContrato" />
+    <input hidden id="etapaId" value="" />
+</hidden>
+
+
 <script>
-    $(".estado").click(function () {
+    $(function () {
+        var idEtapaActiva = $(".etapa.active").attr("id").replace("etapa_", "");
+        $(".tareaTable").hide();
+        $(".etapaObjetoMultmedia").hide();
+        $("#objMultimedia_" + idEtapaActiva).show();
+        $("#table_" + idEtapaActiva).show();
+    });
+
+    $(".etapa").click(function () {
+        $("etapaId").val($(this).attr('id').replace("etapa_", ""));
+
         $(".tareaTable").hide();
         $("#table_" + $(this).attr('id').replace("etapa_", "")).show();
 

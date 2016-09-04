@@ -63,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursoFisico.cs" />
     <Compile Include="Rol.cs" />
-    <Compile Include="RoleMenu.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="Tarea.cs" />
     <Compile Include="TareaEmpleado.cs" />

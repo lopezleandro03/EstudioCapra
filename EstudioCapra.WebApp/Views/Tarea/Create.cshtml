@@ -35,8 +35,8 @@
                 <label asp-for="ListaEmpleadoId" class="control-label"></label>
                 <select asp-for="ListaEmpleadoId" asp-items=@ViewBag.SelectEmpleado multiple class="form-control"></select>
             </div>
-            <input id="etapaId" asp-for="EtapaId"/>
-            <input id="contratoId" asp-for="ContratoId" />
+            <input hidden id="TareaModelEtapaId" asp-for="EtapaId" />
+            <input hidden id="TareaModelContratoId" asp-for="ContratoId" />
         </div>
         <div class="form-actions">
             <button type="submit" class="btn green">Submit</button>
@@ -48,8 +48,8 @@
 
 <script>
     $(function () {
-        //fill etapaId and contratoId
-
+        $("#TareaModelEtapaId").val($("etapaId").val());
+        $("#TareaModelContratoId").val($("contratoId").val());
     });
 
     $("#btnCancelNuevaTarea").click(function () {
