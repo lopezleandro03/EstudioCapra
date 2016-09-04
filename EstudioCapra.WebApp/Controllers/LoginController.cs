@@ -21,13 +21,26 @@ namespace EstudioCapra.Controllers
             return this.View();
         }
 
+        public ActionResult LogOut()
+        {
+            base.HttpContext.Session.SetString("USER", string.Empty);
+
+            var result = this.RedirectToAction("Index", new RouteValueDictionary(new
+            {
+                controller = "Login",
+                action = "Index"
+            }));
+
+            return result;
+        }
+
         public ActionResult Authenticate(LoginModel account)
         {
             if ((from x in _UnitOfWork.UsuarioRepository.GetAll()
                  select x).ToList().Exists(x => x.Email == account.Email && x.Contraseña == account.Contraseña))
             {
                 base.HttpContext.Session.SetString("USER", account.Email);
-                
+
                 return this.RedirectToAction("Index", new RouteValueDictionary(new
                 {
                     controller = "Home",
@@ -40,70 +53,35 @@ namespace EstudioCapra.Controllers
             }
         }
 
+        public ActionResult Authorize()
+        {
+            var user = base.HttpContext.Session.GetString("USER").ToString();
+
+            var model = (from x in _UnitOfWork.UsuarioRolRepository.GetAll()
+                         join u in _UnitOfWork.UsuarioRepository.GetAll() on x.UserId equals u.UserId
+                         join r in _UnitOfWork.RolRepository.GetAll() on x.RolId equals r.RolId
+                         where u.Email == user
+                         select new MenuModel()
+                         {
+                             MenuItems = (from i in r.ItemMenu
+                                          select new MenuItemModel()
+                                          {
+                                              MenuId = i.ItemMenuId,
+                                              MenuName = i.Name,
+                                              DisplayName = i.Name,
+                                              Controller = i.Controlador,
+                                              Action = i.Accion,
+                                              ParentId = i.ItemMenuPadreId
+                                          }).ToList()
+                         }).ToList().FirstOrDefault();
+
+            return PartialView("_Menu", model);
+        }
+
         public PartialViewResult Create()
         {
             return this.PartialView();
         }
 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            ActionResult result;
-            try
-            {
-                result = this.RedirectToAction("Index");
-
-                return this.RedirectToAction("Index", new RouteValueDictionary(new
-                {
-                    controller = "Home",
-                    action = "Index"
-                }));
-            }
-            catch
-            {
-                result = this.View();
-            }
-            return result;
-        }
-
-        public ActionResult Edit(int id)
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            ActionResult result;
-            try
-            {
-                result = this.RedirectToAction("Index");
-            }
-            catch
-            {
-                result = this.View();
-            }
-            return result;
-        }
-
-        public ActionResult Delete(int id)
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            ActionResult result;
-            try
-            {
-                result = this.RedirectToAction("Index");
-            }
-            catch
-            {
-                result = this.View();
-            }
-            return result;
-        }
     }
 }

@@ -4,12 +4,11 @@
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Common;
 
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()
-            : base(DbConnectionUtitly.GetConnectionStringName())
+            : base("name=EstudioCapraEntities")
         {
         }
 
@@ -73,6 +72,10 @@
 
             modelBuilder.Entity<ContratoEmpleado>()
                 .Property(e => e.Salario)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<ContratoEmpleado>()
+                .Property(e => e.CostoHora)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<ContratoEmpleado>()
@@ -200,6 +203,10 @@
             modelBuilder.Entity<Tarea>()
                 .Property(e => e.Descripcion)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Tarea>()
+                .Property(e => e.Costo)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Tarea>()
                 .HasMany(e => e.TareaEmpleado)

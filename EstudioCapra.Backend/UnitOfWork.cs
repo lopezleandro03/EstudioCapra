@@ -26,6 +26,14 @@ namespace EstudioCapra.Backend
 
         private UsuarioRepository _usuarioRepository;
 
+        private UsuarioRolRepository _usuarioRolRepository;
+
+        private RolRepository _rolRepository;
+
+        private ItemMenuRepository _itemMenuRepository;
+
+        private ContratoEmpleadoRepository _contratoEmpleadoRepository;
+
         private bool disposed = false;
 
         private EstudioCapraEntities _context
@@ -163,6 +171,58 @@ namespace EstudioCapra.Backend
                 return this._usuarioRepository;
             }
         }
+
+        public UsuarioRolRepository UsuarioRolRepository
+        {
+            get
+            {
+                bool flag = this._usuarioRolRepository == null;
+                if (flag)
+                {
+                    this._usuarioRolRepository = new UsuarioRolRepository(this._context);
+                }
+                return this._usuarioRolRepository;
+            }
+        }
+
+        public RolRepository RolRepository
+        {
+            get
+            {
+                bool flag = this._rolRepository == null;
+                if (flag)
+                {
+                    this._rolRepository = new RolRepository(this._context);
+                }
+                return this._rolRepository;
+            }
+        }
+        public ItemMenuRepository ItemMenuRepository
+        {
+            get
+            {
+                bool flag = this._itemMenuRepository == null;
+                if (flag)
+                {
+                    this._itemMenuRepository = new ItemMenuRepository(this._context);
+                }
+                return this._itemMenuRepository;
+            }
+        }
+
+        public ContratoEmpleadoRepository ContratoEmpleadoRepository
+        {
+            get
+            {
+                bool flag = this._contratoEmpleadoRepository == null;
+                if (flag)
+                {
+                    this._contratoEmpleadoRepository = new ContratoEmpleadoRepository(this._context);
+                }
+                return this._contratoEmpleadoRepository;
+            }
+        }
+        
 
         public UnitOfWork(EstudioCapraEntities context)
         {

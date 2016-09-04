@@ -1,4 +1,5 @@
 ﻿using EstudioCapra.Backend;
+using EstudioCapra.Model.Login;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -30,16 +31,31 @@ namespace EstudioCapra.WebApp.Controllers
             }
             else
             {
-                result = this.View();
+                var user = base.HttpContext.Session.GetString("USER").ToString();
+
+                var model = (from x in _UnitOfWork.UsuarioRolRepository.GetAll()
+                             join u in _UnitOfWork.UsuarioRepository.GetAll() on x.UserId equals u.UserId
+                             join r in _UnitOfWork.RolRepository.GetAll() on x.RolId equals r.RolId
+                             where u.Email == user
+                             select new MenuModel()
+                             {
+                                 MenuItems = (from i in r.ItemMenu
+                                              select new MenuItemModel()
+                                              {
+                                                  MenuId = i.ItemMenuId,
+                                                  MenuName = i.Name,
+                                                  DisplayName = i.Name,
+                                                  Controller = i.Controlador,
+                                                  Action = i.Accion,
+                                                  ParentId = i.ItemMenuPadreId
+                                              }).ToList()
+                             }).ToList().FirstOrDefault();
+
+                result = this.View(model);
             }
             return result;
         }
-
-        public IActionResult Menu()
-        {
-            return View("_Menu");
-        }
-
+        
         public IActionResult Dashboard()
         {
 

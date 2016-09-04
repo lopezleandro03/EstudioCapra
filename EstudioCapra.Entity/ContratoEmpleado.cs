@@ -25,6 +25,9 @@ namespace EstudioCapra.Entity
         [Column(TypeName = "money")]
         public decimal Salario { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal CostoHora { get; set; }
+
         [Required]
         [StringLength(50)]
         public string ModoDePago { get; set; }

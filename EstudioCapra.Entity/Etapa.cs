@@ -20,6 +20,7 @@ namespace EstudioCapra.Entity
 
         public int ServicioId { get; set; }
 
+        public decimal CostoBase { get; set; }
         [Required]
         [StringLength(200)]
         public string Nombre { get; set; }

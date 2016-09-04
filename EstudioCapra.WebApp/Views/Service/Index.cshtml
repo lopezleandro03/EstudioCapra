@@ -43,7 +43,7 @@
                             @Html.DisplayFor(modelItem => item.ApellidoCiente)
                         </td>
                         <td>
-                            @Html.ActionLink("Detalles", "Details", new { idContrato = item.IdContrato })
+                            <button id="@item.IdContrato" class="btnContractDetail">Detalles</button>
                         </td>
                     </tr>
                 }
@@ -53,3 +53,25 @@
     </div>
 </div>
 <!-- END PAGE BASE CONTENT -->
+ 
+<script>
+    $(".btnContractDetail").click(function () {
+        var url = "/Service/Details?idContrato=" + $(this).attr("id")
+        alert(url);
+        $.ajax({
+            type: 'GET',
+            url: url,
+            contentType: "html",
+            dataType: "html",
+            success: function (data) {
+                $(".page-content").html(data);
+            },
+            error: function (data) {
+                alert("Oops, algo anda mal...");
+            }
+        });
+
+     })
+
+
+</script>

@@ -37,9 +37,14 @@ namespace EstudioCapra.Entity
 
         public int? TareaPadreId { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal Costo { get; set; }
+
         public virtual Etapa Etapa { get; set; }
 
         public virtual TipoTarea TipoTarea { get; set; }
+
+        public int Horas { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TareaEmpleado> TareaEmpleado { get; set; }

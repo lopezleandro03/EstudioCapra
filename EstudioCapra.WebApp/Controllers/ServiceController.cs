@@ -44,6 +44,35 @@ namespace EstudioCapra.Controllers
 
         }
 
+        public ActionResult MyServices()
+        {
+            try
+            {
+                var currentUserEmail = base.HttpContext.Session.GetString("USER").ToString();
+
+                var model = (from x in _UnitOfWork.ContratoRepository.GetAll()
+                            join y in _UnitOfWork.UsuarioRepository.GetAll()
+                            on x.Cliente.UserId equals y.UserId
+                            where y.Email == currentUserEmail
+                            select new ServiceModel()
+                            {
+                                IdContrato = x.ContratoId,
+                                IdCliente = x.ClienteId,
+                                IdServicio = x.ServicioId,
+                                FechaInicio = x.FechaInicio,
+                                NombreCiente = x.Cliente.Nombre,
+                                ApellidoCiente = x.Cliente.Apellido,
+                                DescripcionServicio = x.Servicio.Nombre
+                            }).ToList();
+
+                return PartialView("Index",model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ExceptionMessage = ex.Message;
+                return View("Error");
+            }
+        }
         //
         // GET: /Service/Details/5
         public ActionResult Details(int idContrato)

@@ -55,6 +55,26 @@ namespace EstudioCapra.Backend
             get;
         }
 
+        UsuarioRolRepository UsuarioRolRepository
+        {
+            get;
+        }
+
+        RolRepository RolRepository
+        {
+            get;
+        }
+
+        ItemMenuRepository ItemMenuRepository
+        {
+            get;
+        }
+
+        ContratoEmpleadoRepository ContratoEmpleadoRepository
+        {
+            get;
+        }
+
         void Save();
 
         void Dispose();
