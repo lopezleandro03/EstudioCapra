@@ -34,6 +34,8 @@ namespace EstudioCapra.Backend
 
         private ContratoEmpleadoRepository _contratoEmpleadoRepository;
 
+        private PagoRepository _pagoRepository;
+
         private bool disposed = false;
 
         private EstudioCapraEntities _context
@@ -222,12 +224,25 @@ namespace EstudioCapra.Backend
                 return this._contratoEmpleadoRepository;
             }
         }
-        
 
+        public PagoRepository PagoRepository
+        {
+            get
+            {
+                bool flag = this._pagoRepository == null;
+                if (flag)
+                {
+                    this._pagoRepository = new PagoRepository(this._context);
+                }
+                return this._pagoRepository;
+            }
+        }
+        
         public UnitOfWork(EstudioCapraEntities context)
         {
             this._context = context;
         }
+
 
         public UnitOfWork()
         {

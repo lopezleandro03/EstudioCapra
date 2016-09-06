@@ -1,58 +1,33 @@
-﻿using System;
+﻿using EstudioCapra.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using EstudioCapra.Model.Cuenta;
-using EstudioCapra.Backend.BLL;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace EstudioCapra.WebApp.Controllers
+namespace EstudioCapra.Backend.BLL
 {
-    public class AccountController : BaseController
+
+    public class AccountManager
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        public int ClientId { get; set; }
+        public List<Pago> Pagos { get; set; }
+        private IUnitOfWork _UnitOfWork { get; set; }
+
+        public AccountManager(IUnitOfWork unitOfOwork, int clientId)
         {
-            var user = base.HttpContext.Session.GetString("USER");
-
-
-            var clientId = (from x in _UnitOfWork.ClienteRepository.GetAll()
-                            join y in _UnitOfWork.UsuarioRepository.GetAll() on x.UserId equals y.UserId
-                            where y.Email == user
-                            select x.ClienteId
-                         ).FirstOrDefault();
-
-            AccountManager AccMan = new AccountManager(_UnitOfWork, clientId);
-
-            CuentaModel model = new CuentaModel()
-            {
-                PagoMinimo = AccMan.GetPagoMinimo(),
-                Saldo = AccMan.GetSaldo(),
-                Total = AccMan.GetTotalAcum(),
-                Pagos = AccMan.Pagos.Select(x => new PagoModel()
-                {
-                    Estado = x.Estado,
-                    FechaDePago = x.FechaDePago,
-                    MetodoDePago = x.MetodoPago.Nombre,
-                    Monto = x.Monto,
-                    Motivo = x.Motivo,
-                    PagoId = x.PagoId
-                }).ToList()
-            };
-
-            return View(model);
+            this.ClientId = clientId;
+            this.Pagos = (from x in _UnitOfWork.ClienteRepository.GetAll()
+                          join p in _UnitOfWork.PagoRepository.GetAll() on x.ClienteId equals p.ClienteId
+                          where x.ClienteId == clientId
+                          select p).ToList();
         }
-        
-        private Decimal GetSaldo()
+
+        public Decimal GetSaldo()
         {
             Decimal total = 0;
-            var user = base.HttpContext.Session.GetString("USER");
             var contractos = from x in _UnitOfWork.ContratoRepository.GetAll()
-                             join y in _UnitOfWork.UsuarioRepository.GetAll() on x.Cliente.UserId equals y.UserId
-                             where y.Email == user
+                             where x.ClienteId == ClientId
                              select x;
 
             if (contractos.Count() > 0)
@@ -92,5 +67,19 @@ namespace EstudioCapra.WebApp.Controllers
             return total;
         }
 
+        public decimal GetTotalAcum()
+        {
+            var total = 0;
+
+            return total;
+        }
+
+        public decimal GetPagoMinimo()
+        {
+            var total = 0;
+
+            return total;
+        }
+        
     }
 }

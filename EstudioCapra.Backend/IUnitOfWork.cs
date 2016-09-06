@@ -75,6 +75,11 @@ namespace EstudioCapra.Backend
             get;
         }
 
+        PagoRepository PagoRepository
+        {
+            get;
+        }
+        
         void Save();
 
         void Dispose();

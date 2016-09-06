@@ -13,6 +13,7 @@ namespace EstudioCapra.Entity
         public Cliente()
         {
             Contrato = new HashSet<Contrato>();
+            Pago = new HashSet<Pago>();
         }
 
         public int ClienteId { get; set; }
@@ -40,5 +41,8 @@ namespace EstudioCapra.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contrato> Contrato { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pago> Pago { get; set; }
     }
 }

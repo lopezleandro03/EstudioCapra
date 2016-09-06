@@ -20,7 +20,6 @@ namespace EstudioCapra.Entity
 
         public int ServicioId { get; set; }
 
-        public decimal CostoBase { get; set; }
         [Required]
         [StringLength(200)]
         public string Nombre { get; set; }
@@ -31,6 +30,12 @@ namespace EstudioCapra.Entity
 
         [Column(TypeName = "date")]
         public DateTime FechaInicio { get; set; }
+
+        public decimal CostoBase { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Estado { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? FechaFin { get; set; }

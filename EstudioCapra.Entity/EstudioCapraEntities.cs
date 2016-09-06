@@ -19,7 +19,9 @@
         public virtual DbSet<Etapa> Etapa { get; set; }
         public virtual DbSet<EtapaRecursoFisico> EtapaRecursoFisico { get; set; }
         public virtual DbSet<ItemMenu> ItemMenu { get; set; }
+        public virtual DbSet<MetodoPago> MetodoPago { get; set; }
         public virtual DbSet<ObjetoMultimedia> ObjetoMultimedia { get; set; }
+        public virtual DbSet<Pago> Pago { get; set; }
         public virtual DbSet<RecursoFisico> RecursoFisico { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Servicio> Servicio { get; set; }
@@ -55,6 +57,11 @@
 
             modelBuilder.Entity<Cliente>()
                 .HasMany(e => e.Contrato)
+                .WithRequired(e => e.Cliente)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(e => e.Pago)
                 .WithRequired(e => e.Cliente)
                 .WillCascadeOnDelete(false);
 
@@ -108,6 +115,14 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<Etapa>()
+                .Property(e => e.CostoBase)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Etapa>()
+                .Property(e => e.Estado)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Etapa>()
                 .HasMany(e => e.Tarea)
                 .WithRequired(e => e.Etapa)
                 .WillCascadeOnDelete(false);
@@ -137,6 +152,19 @@
                 .WithMany(e => e.ItemMenu)
                 .Map(m => m.ToTable("RoleMenu").MapLeftKey("ItemMenuId").MapRightKey("RolId"));
 
+            modelBuilder.Entity<MetodoPago>()
+                .Property(e => e.Nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MetodoPago>()
+                .Property(e => e.Descripcion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MetodoPago>()
+                .HasMany(e => e.Pago)
+                .WithRequired(e => e.MetodoPago)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ObjetoMultimedia>()
                 .Property(e => e.Servidor)
                 .IsUnicode(false);
@@ -151,6 +179,18 @@
 
             modelBuilder.Entity<ObjetoMultimedia>()
                 .Property(e => e.Tipo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pago>()
+                .Property(e => e.Monto)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Pago>()
+                .Property(e => e.Estado)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pago>()
+                .Property(e => e.Motivo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<RecursoFisico>()

@@ -19,6 +19,8 @@ namespace EstudioCapra.Entity
 
         public int EtapaId { get; set; }
 
+        public int Horas { get; set; }
+
         public int TipoTareaId { get; set; }
 
         [Required]
@@ -43,8 +45,6 @@ namespace EstudioCapra.Entity
         public virtual Etapa Etapa { get; set; }
 
         public virtual TipoTarea TipoTarea { get; set; }
-
-        public int Horas { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TareaEmpleado> TareaEmpleado { get; set; }
