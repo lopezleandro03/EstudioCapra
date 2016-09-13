@@ -4,11 +4,12 @@
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Common;
 
     public partial class EstudioCapraEntities : DbContext
     {
         public EstudioCapraEntities()
-            : base("name=EstudioCapraEntities")
+            : base(DbConnectionUtitly.GetConnectionStringName())
         {
         }
 
