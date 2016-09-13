@@ -21,19 +21,6 @@ namespace EstudioCapra.Controllers
             return this.View();
         }
 
-        public ActionResult LogOut()
-        {
-            base.HttpContext.Session.SetString("USER", string.Empty);
-
-            var result = this.RedirectToAction("Index", new RouteValueDictionary(new
-            {
-                controller = "Login",
-                action = "Index"
-            }));
-
-            return result;
-        }
-
         public ActionResult Authenticate(LoginModel account)
         {
             if ((from x in _UnitOfWork.UsuarioRepository.GetAll()
@@ -41,10 +28,9 @@ namespace EstudioCapra.Controllers
             {
                 base.HttpContext.Session.SetString("USER", account.Email);
 
-                return this.RedirectToAction("Index", new RouteValueDictionary(new
+                return this.RedirectToAction("Authorize", new RouteValueDictionary(new
                 {
-                    controller = "Home",
-                    action = "Index"
+                    action = "Authorize"
                 }));
             }
             else
@@ -63,6 +49,10 @@ namespace EstudioCapra.Controllers
                          where u.Email == user
                          select new MenuModel()
                          {
+                             Nombre = u.Nombre,
+                             Apellido = u.Apellido,
+                             DefaultController = r.DefaultController,
+                             DefaultAction = r.DefaultAction,
                              MenuItems = (from i in r.ItemMenu
                                           select new MenuItemModel()
                                           {
@@ -75,13 +65,20 @@ namespace EstudioCapra.Controllers
                                           }).ToList()
                          }).ToList().FirstOrDefault();
 
-            return PartialView("_Menu", model);
+            return View("_Menu", model);
         }
 
-        public PartialViewResult Create()
+        public ActionResult LogOut()
         {
-            return this.PartialView();
-        }
+            base.HttpContext.Session.SetString("USER", string.Empty);
 
+            var result = this.RedirectToAction("Index", new RouteValueDictionary(new
+            {
+                controller = "Login",
+                action = "Index"
+            }));
+
+            return result;
+        }
     }
 }

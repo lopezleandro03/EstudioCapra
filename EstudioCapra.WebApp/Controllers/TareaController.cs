@@ -53,7 +53,8 @@ namespace EstudioCapra.WebApp.Controllers
                 FechaFin = model.FechaFinTarea,
                 TareaPadreId = null,
                 TipoTareaId = model.idTipoTarea,
-                EtapaId = model.EtapaId
+                EtapaId = model.EtapaId,
+                Costo = model.Costo
             };
 
             _UnitOfWork.TareaRespository.Add(tarea);

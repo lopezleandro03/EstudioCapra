@@ -19,8 +19,6 @@ namespace EstudioCapra.Entity
 
         public int EtapaId { get; set; }
 
-        public int Horas { get; set; }
-
         public int TipoTareaId { get; set; }
 
         [Required]
@@ -41,6 +39,8 @@ namespace EstudioCapra.Entity
 
         [Column(TypeName = "money")]
         public decimal Costo { get; set; }
+
+        public int Horas { get; set; }
 
         public virtual Etapa Etapa { get; set; }
 

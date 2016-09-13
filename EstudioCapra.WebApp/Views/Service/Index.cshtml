@@ -14,50 +14,50 @@
 <!-- END BREADCRUMBS -->
 <!-- BEGIN PAGE BASE CONTENT -->
 <div class="row">
+        <div class="col-md-12">
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DescripcionServicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NombreCiente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ApellidoCiente)
+                            </th>
+                        </tr>
 
-    <div class="portlet-body">
-        <div class="table-scrollable">
-            <table class="table table-striped table-hover">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DescripcionServicio)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NombreCiente)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ApellidoCiente)
-                    </th>
-                </tr>
+                        @foreach (var item in Model)
+                          {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DescripcionServicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NombreCiente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ApellidoCiente)
+                                </td>
+                                <td>
+                                    <button id="@item.IdContrato" class="btnContractDetail">Detalles</button>
+                                </td>
+                            </tr>
+                        }
 
-                @foreach (var item in Model)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DescripcionServicio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NombreCiente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ApellidoCiente)
-                        </td>
-                        <td>
-                            <button id="@item.IdContrato" class="btnContractDetail">Detalles</button>
-                        </td>
-                    </tr>
-                }
-
-            </table>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 <!-- END PAGE BASE CONTENT -->
- 
+
 <script>
     $(".btnContractDetail").click(function () {
         var url = "/Service/Details?idContrato=" + $(this).attr("id")
-        alert(url);
         $.ajax({
             type: 'GET',
             url: url,
@@ -71,7 +71,7 @@
             }
         });
 
-     })
+    })
 
 
 </script>

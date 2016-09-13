@@ -15,4 +15,5 @@ namespace EstudioCapra.Model.Cuenta
         public string Motivo { get; set; }
         public string MetodoDePago { get; set; }
     }
+
 }

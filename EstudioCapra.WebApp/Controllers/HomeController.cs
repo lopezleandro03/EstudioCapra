@@ -17,7 +17,6 @@ namespace EstudioCapra.WebApp.Controllers
 
         public IActionResult Index()
         {
-
             bool flag = string.IsNullOrEmpty(base.HttpContext.Session.GetString("USER"));
             IActionResult result;
 
@@ -39,6 +38,8 @@ namespace EstudioCapra.WebApp.Controllers
                              where u.Email == user
                              select new MenuModel()
                              {
+                                 Nombre = u.Nombre,
+                                 Apellido = u.Apellido,
                                  MenuItems = (from i in r.ItemMenu
                                               select new MenuItemModel()
                                               {
@@ -55,10 +56,9 @@ namespace EstudioCapra.WebApp.Controllers
             }
             return result;
         }
-        
+
         public IActionResult Dashboard()
         {
-
             var contratosNuevos = from x in _UnitOfWork.ContratoRepository.GetAll() where x.FechaInicio > DateTime.Now.AddMonths(-1) select x;
             ViewBag.ContratosNuevos = contratosNuevos.Count();
 

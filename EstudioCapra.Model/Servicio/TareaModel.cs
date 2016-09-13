@@ -94,5 +94,11 @@ namespace EstudioCapra.Models
             get;
             set;
         }
+
+        public decimal Costo
+        {
+            get;
+            set;
+        }
     }
 }

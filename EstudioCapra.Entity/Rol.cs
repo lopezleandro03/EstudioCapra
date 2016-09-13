@@ -31,6 +31,12 @@ namespace EstudioCapra.Entity
         [StringLength(200)]
         public string Descripcion { get; set; }
 
+        [StringLength(50)]
+        public string DefaultController { get; set; }
+
+        [StringLength(50)]
+        public string DefaultAction { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsuarioRol> UsuarioRol { get; set; }
 

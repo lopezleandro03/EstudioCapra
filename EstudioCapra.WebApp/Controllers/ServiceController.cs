@@ -41,31 +41,35 @@ namespace EstudioCapra.Controllers
                 ViewBag.ExceptionMessage = ex.Message;
                 return View("Error");
             }
-
         }
 
         public ActionResult MyServices()
         {
             try
             {
-                var currentUserEmail = base.HttpContext.Session.GetString("USER").ToString();
+                if (!string.IsNullOrEmpty(base.HttpContext.Session.GetString("USER")))
+                {
+                    var model = (from x in _UnitOfWork.ContratoRepository.GetAll()
+                                 join y in _UnitOfWork.UsuarioRepository.GetAll()
+                                 on x.Cliente.UserId equals y.UserId
+                                 where y.Email == base.HttpContext.Session.GetString("USER").ToString()
+                                 select new ServiceModel()
+                                 {
+                                     IdContrato = x.ContratoId,
+                                     IdCliente = x.ClienteId,
+                                     IdServicio = x.ServicioId,
+                                     FechaInicio = x.FechaInicio,
+                                     NombreCiente = x.Cliente.Nombre,
+                                     ApellidoCiente = x.Cliente.Apellido,
+                                     DescripcionServicio = x.Servicio.Nombre
+                                 }).ToList();
 
-                var model = (from x in _UnitOfWork.ContratoRepository.GetAll()
-                            join y in _UnitOfWork.UsuarioRepository.GetAll()
-                            on x.Cliente.UserId equals y.UserId
-                            where y.Email == currentUserEmail
-                            select new ServiceModel()
-                            {
-                                IdContrato = x.ContratoId,
-                                IdCliente = x.ClienteId,
-                                IdServicio = x.ServicioId,
-                                FechaInicio = x.FechaInicio,
-                                NombreCiente = x.Cliente.Nombre,
-                                ApellidoCiente = x.Cliente.Apellido,
-                                DescripcionServicio = x.Servicio.Nombre
-                            }).ToList();
-
-                return PartialView("Index",model);
+                    return PartialView("Index", model);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception ex)
             {
@@ -109,6 +113,7 @@ namespace EstudioCapra.Controllers
                                                                    FechaFinTarea = t.FechaFin,
                                                                    idTipoTarea = t.TipoTareaId,
                                                                    TemplateTarea = t.TipoTarea.TareaTemplate,
+                                                                   Costo = t.Costo,
                                                                    ListEmpleado = (from te in _UnitOfWork.TareaEmpleadoRepository.GetAll()
                                                                                    where te.TareaId == t.TareaId
                                                                                    select new EmpleadoModel()

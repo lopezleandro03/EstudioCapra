@@ -1,0 +1,291 @@
+﻿@model EstudioCapra.Model.Cuenta.CuentaModel
+
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Metronic | Pricing Tables</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- BEGIN LAYOUT FIRST STYLES -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
+    <!-- END LAYOUT FIRST STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css">
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="../assets/pages/css/pricing.min.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="../assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/layouts/layout5/css/custom.min.css" rel="stylesheet" type="text/css">
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>Metronic | User Profile 2</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- BEGIN LAYOUT FIRST STYLES -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
+    <!-- END LAYOUT FIRST STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css">
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="../assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="../assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/layouts/layout5/css/custom.min.css" rel="stylesheet" type="text/css">
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<!-- BEGIN BREADCRUMBS -->
+<div class="breadcrumbs">
+    <h1>Estado Cuenta</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Cuenta</li>
+    </ol>
+</div>
+<!-- END BREADCRUMBS -->
+<!-- BEGIN PAGE BASE CONTENT -->
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="portlet sale-summary">
+            <div class="portlet-title">
+                <div class="caption font-red sbold"> Resumen </div>
+                <div class="tools">
+                    <a class="reload" href="javascript:;" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <ul class="list-unstyled">
+                    <li>
+                        <span class="sale-info">
+                            ACUMULADO
+                            <i class="fa fa-img-up"></i>
+                        </span>
+
+                        <span class="sale-num"> @Model.Total </span>
+                    </li>
+                    <li>
+                        <span class="sale-info">
+                            SALDO
+                            <i class="fa fa-img-down"></i>
+                        </span>
+                        <span class="sale-num"> @Model.Saldo </span>
+                    </li>
+                    <li>
+                        <span class="sale-info"> PAGADO </span>
+                        <span class="sale-num"> @Model.Total </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 portlet">
+        <div class="portlet-title">
+            <div class="caption font-red sbold"> Historia de Pagos </div>
+            <div class="tools">
+                <a class="reload" href="javascript:;" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Motivo
+                        </th>
+                        <th>
+                            Monto
+                        </th>
+                        <th>
+                            Fecha de Pago
+                        </th>
+                        <th>
+                            Metodo de Pago
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+                    </tr>
+
+                    @foreach (var pago in Model.Pagos)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.PagoId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.Motivo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.Monto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.FechaDePago)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.MetodoDePago)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => pago.Estado)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="portlet col-md-8 col-md-offset-2">
+        <div class="portlet-title">
+            <div class="caption font-red sbold"> Nuevo Pago </div>
+            <div class="tools">
+                <a class="reload" href="javascript:;" data-original-title="" title=""> </a>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <div class="pricing-content-2">
+                <div class="pricing-table-container">
+                    <div class="row padding-fix">
+                        <div class="col-md-offset-2 col-md-4 no-padding">
+                            <div class="price-column-container featured-price border-top">
+                                <div class="price-feature-label uppercase bg-green-jungle">Pago Mínimo</div>
+                                <div class="price-table-head price-2">
+                                    <h2 class="uppercase no-margin">Start up</h2>
+                                </div>
+                                <div class="price-table-pricing">
+                                    <h3>
+                                        <span class="price-sign">$</span>@Model.PagoMinimo
+                                    </h3>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-user-follow"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">Service 1</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-drawer"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">500GB Storage</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-cloud-download"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase font-green sbold">Cloud Syncing</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-refresh"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase font-green sbold">Daily Backups</div>
+                                    </div>
+                                </div>
+                                <div class="price-table-footer">
+                                    <button type="button" id="btnPagoMinimo" class="btn green featured-price uppercase">PAGAR!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 no-padding">
+                            <div class="price-column-container border-top border-right">
+                                <div class="price-table-head price-3">
+                                    <h2 class="uppercase no-margin">Enterprise</h2>
+                                </div>
+                                <div class="price-table-pricing">
+                                    <h3>
+                                        <span class="price-sign">$</span>@(Model.Total)
+                                    </h3>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-users"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">100 Members</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-drawer"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase font-green sbold">2TB Storage</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-cloud-download"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">Cloud Syncing</div>
+                                    </div>
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="icon-refresh"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">Weekly Backups</div>
+                                    </div>
+                                </div>
+                                <div class="price-table-footer">
+                                    <button type="button" id="btnPagoTotal" class="btn grey-salsa btn-outline sbold uppercase bold">PAGAR!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#btnPagoTotal").click(function () {
+        window.location.href = "@ViewBag.PagoTotal";
+    });
+
+    $("#btnPagoMinimo").click(function () {
+        window.location.href = "@ViewBag.PagoMinimo";
+    });
+</script>

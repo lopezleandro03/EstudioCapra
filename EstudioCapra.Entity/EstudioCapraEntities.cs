@@ -218,6 +218,14 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<Rol>()
+                .Property(e => e.DefaultController)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Rol>()
+                .Property(e => e.DefaultAction)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Rol>()
                 .HasMany(e => e.UsuarioRol)
                 .WithRequired(e => e.Rol)
                 .WillCascadeOnDelete(false);
