@@ -7,16 +7,11 @@ namespace EstudioCapra.Controllers
 {
     public class ClienteController : BaseController
     {
-        public ClienteController(UnitOfWork unitOfWork)
-        {
-            _UnitOfWork = unitOfWork;
-        }
-        
         //
         // GET: /Cliente/
         public ActionResult Index()
         {
-            return View();
+            return View("Test");
         }
 
         //
