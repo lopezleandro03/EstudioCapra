@@ -174,12 +174,13 @@
         var idEtapaActiva = $(".etapa.active").attr("id").replace("etapa_", "");
         $(".tareaTable").hide();
         $(".etapaObjetoMultmedia").hide();
+        $("#etapaId").val(idEtapaActiva);
         $("#objMultimedia_" + idEtapaActiva).show();
         $("#table_" + idEtapaActiva).show();
     });
 
     $(".etapa").click(function () {
-        $("etapaId").val($(this).attr('id').replace("etapa_", ""));
+        $("#etapaId").val($(this).attr('id').replace("etapa_", ""));
 
         $(".tareaTable").hide();
         $("#table_" + $(this).attr('id').replace("etapa_", "")).show();

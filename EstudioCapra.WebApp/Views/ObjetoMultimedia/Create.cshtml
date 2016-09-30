@@ -18,7 +18,7 @@
                 <input asp-for="Archivo" class="form-control">
             </div>
             <input id="ObjMultimediaModelEtapaId" hidden asp-for="EtapaId" />
-            <input id="ObjMultimediaContratoId" hidden asp-for="ContratoId" />
+            <input id="ObjMultimediaModelContratoId" hidden asp-for="ContratoId" />
         </div>
         <div class="form-actions">
             <button type="submit" class="btn green">Submit</button>
@@ -30,8 +30,8 @@
 
 <script>
     $(function () {
-        $("#ObjMultimediaModelEtapaId").val($("etapaId").val());
-        $("#ObjMultimediaModelContratoId").val($("contratoId").val());
+        $("#ObjMultimediaModelEtapaId").val($("#etapaId").val());
+        $("#ObjMultimediaModelContratoId").val($("#contratoId").val());
     });
 
     $("#btnCancelNuevoObjMultimedia").click(function () {
