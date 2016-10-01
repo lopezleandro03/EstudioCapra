@@ -11,7 +11,8 @@ namespace EstudioCapra.Model.Cuenta
         public string Saldo { get; set; }
         public string Total { get; set; }
         public string PagoMinimo { get; set; }
+        public string TotalPagosAceptados { get; set; }
         public List<PagoModel> Pagos { get; set; }
-        
+        public string TotalPagosPendientes { get; set; }
     }
 }

@@ -45,6 +45,8 @@ namespace EstudioCapra.WebApp.Controllers
                 PagoMinimo = Convert.ToInt32(AccMan.GetPagoMinimo()).ToString(),
                 Saldo = Convert.ToInt32(AccMan.GetSaldo()).ToString(),
                 Total = Convert.ToInt32(AccMan.GetTotalAcum()).ToString(),
+                TotalPagosAceptados = Convert.ToInt32(AccMan.GetTotalPagosAceptados()).ToString(),
+                TotalPagosPendientes = Convert.ToInt32(AccMan.GetTotalPagosPendientes()).ToString(),
                 Pagos = AccMan.Pagos.Select(x => new PagoModel()
                 {
                     Estado = x.Estado,
@@ -56,6 +58,7 @@ namespace EstudioCapra.WebApp.Controllers
                 }).ToList()
             };
             
+            //Generación de links de pago Mercado Pago
             ViewBag.PagoMinimo = NuevoPago(clientId.ToString(), Convert.ToInt32(AccMan.GetPagoMinimo()));
             ViewBag.PagoTotal = NuevoPago(clientId.ToString(), Convert.ToInt32(AccMan.GetSaldo()));
 

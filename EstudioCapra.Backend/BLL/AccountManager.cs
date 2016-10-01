@@ -10,6 +10,8 @@ namespace EstudioCapra.Backend.BLL
 
     public class AccountManager
     {
+        private double TASAPAGOMINIMO = 0.2;
+
         public int ClientId { get; set; }
         public List<Pago> Pagos { get; set; }
         private IUnitOfWork _UnitOfWork { get; set; }
@@ -39,7 +41,7 @@ namespace EstudioCapra.Backend.BLL
                 {
                     total = total + contract.Costo;
 
-                    foreach (var etapa in contract.Servicio.Etapa.Where(x => x.Estado != "FINALIZADO" || x.Estado != "PAGADO"))
+                    foreach (var etapa in contract.Servicio.Etapa.Where(x => x.Estado != "FINALIZADA" && x.Estado != "PAGADO"))
                     {
                         total = total + etapa.CostoBase;
 
@@ -66,6 +68,34 @@ namespace EstudioCapra.Backend.BLL
             else
             {
                 total = 0;
+            }
+            return total;
+        }
+
+        public decimal GetTotalPagosAceptados()
+        {
+            decimal total = 0;
+            foreach (var pago in Pagos)
+            {
+                if (pago.Estado == "ACEPTADO")
+                {
+                    total = total + pago.Monto;
+                }
+
+            }
+            return total;
+        }
+
+        public decimal GetTotalPagosPendientes()
+        {
+            decimal total = 0;
+            foreach (var pago in Pagos)
+            {
+                if (pago.Estado == "PENDIENTE")
+                {
+                    total = total + pago.Monto;
+                }
+
             }
             return total;
         }
@@ -115,47 +145,9 @@ namespace EstudioCapra.Backend.BLL
         }
 
 
-        public decimal GetPagoMinimo()
+        public double GetPagoMinimo()
         {
-            Decimal total = 0;
-            var contractos = from x in _UnitOfWork.ContratoRepository.GetAll()
-                             where x.ClienteId == ClientId
-                             select x;
-
-            var listaDeServiciosAbiertos = new List<Etapa>();
-
-            foreach (var contrato in contractos)
-            {
-                List<Etapa> etapasNoCerradas = (from x in contrato.Servicio.Etapa
-                                               where x.Estado != "FINALIZADO" || x.Estado != "PAGADO"
-                                               select x).ToList();
-
-                if (etapasNoCerradas.Any())
-                {
-                    var etapaAPagar = etapasNoCerradas.OrderBy(x => x.FechaInicio).First();
-                    total = etapaAPagar.CostoBase;
-
-                    foreach (var tarea in etapaAPagar.Tarea)
-                    {
-                        total = total + tarea.Costo ;
-
-                        foreach (var empleado in (from te in _UnitOfWork.TareaEmpleadoRepository.GetAll()
-                                                  join ce in _UnitOfWork.ContratoEmpleadoRepository.GetAll() on te.EmpleadoId equals ce.EmpleadoId
-                                                  where te.TareaId == tarea.TareaId
-                                                  select ce).ToList())
-                        {
-                            total = total + tarea.Horas * empleado.CostoHora;
-                            ///
-
-                        }
-
-                    }
-
-
-                }
-            }
-                                           
-
+            var total = Convert.ToDouble(GetSaldo()) * TASAPAGOMINIMO;
             return total;
         }
         
