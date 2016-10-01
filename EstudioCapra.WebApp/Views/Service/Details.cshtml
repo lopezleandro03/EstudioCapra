@@ -9,7 +9,7 @@
     <h1>Servicio</h1>
     <ol class="breadcrumb">
         <li>
-            <a href="#">Servicios</a>
+            <a>Servicios</a>
         </li>
         <li class="active">Detalle</li>
     </ol>
@@ -44,31 +44,31 @@
                 </div>
 
                 @for (int i = 0; i < Model.ListaEtapas.Count; i++)
-            {
+                {
                 if (@i == 0)
                 {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col first @Model.ListaEtapas[i].Estado etapa">
-                            <div class="mt-step-number bg-white">@(i + 1)</div>
-                            <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
-                            <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
-                        </div>
-                    }
-                    else if (@i == Model.ListaEtapas.Count - 1)
-                    {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col last @Model.ListaEtapas[i].Estado etapa">
-                            <div class="mt-step-number bg-white">@(i + 1)</div>
-                            <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
-                            <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col @Model.ListaEtapas[i].Estado etapa">
-                            <div class="mt-step-number bg-white">@(i + 1)</div>
-                            <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
-                            <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
-                        </div>
-                    }
+                <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col first @Model.ListaEtapas[i].Estado etapa">
+                    <div class="mt-step-number bg-white">@(i + 1)</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
+                    <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
+                </div>
+                }
+                else if (@i == Model.ListaEtapas.Count - 1)
+                {
+                <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col last @Model.ListaEtapas[i].Estado etapa">
+                    <div class="mt-step-number bg-white">@(i + 1)</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
+                    <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
+                </div>
+                }
+                else
+                {
+                <div id="etapa_@Model.ListaEtapas[i].IdEtapa" class="col-md-@ViewBag.EtapaColSize mt-step-col @Model.ListaEtapas[i].Estado etapa">
+                    <div class="mt-step-number bg-white">@(i + 1)</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">@Model.ListaEtapas[i].NombreEtapa</div>
+                    <div class="mt-step-content font-grey-cascade">@Model.ListaEtapas[i].DescripcionEtapa</div>
+                </div>
+                }
                 }
             </div>
         </div>
@@ -85,46 +85,60 @@
         <div class="row">
             @foreach (var item in Model.ListaEtapas)
             {
-                <div id="table_@item.IdEtapa" class="col-lg-12 tareaTable">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            @item.NombreEtapa
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Tarea</th>
-                                            <th>Descripcion</th>
-                                            <th>Inicio</th>
-                                            <th>Fin</th>
-                                            <th>Tipo</th>
-                                            <th>Empleado</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var tarea in item.ListaTareas)
-                                        {
-                                            <tr>
-                                                <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
-                                                <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
-                                                <td>@Html.DisplayFor(modeltarea => tarea.FechaInicioTarea)</td>
-                                                <td>@Html.DisplayFor(modeltarea => tarea.FechaFinTarea)</td>
-                                                <td>@Html.DisplayFor(modeltarea => tarea.NombreTipoTarea)</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
+            <div id="table_@item.IdEtapa" class="col-lg-12 tareaTable">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @item.NombreEtapa
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tarea</th>
+                                        <th>Descripcion</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Tipo</th>
+                                        <th>Empleado(s)</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var tarea in item.ListaTareas)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modeltarea => tarea.NombreTarea)</td>
+                                        <td>@Html.DisplayFor(modeltarea => tarea.DescripcionTarea)</td>
+                                        <td>@Html.DisplayFor(modeltarea => tarea.FechaInicioTarea)</td>
+                                        <td>@Html.DisplayFor(modeltarea => tarea.FechaFinTarea)</td>
+                                        <td>@Html.DisplayFor(modeltarea => tarea.NombreTipoTarea)</td>
+                                        <td>
+                                            @foreach (var empleado in @tarea.ListEmpleado)
+                                            {
+                                            if (@tarea.ListEmpleado.Last() == empleado)
+                                            {
+                                            @String.Format("{0} {1} - {2} {3}", empleado.Nombre, empleado.Apellido, empleado.Especializacion, Environment.NewLine)
+                                            }
+                                            else
+                                            {
+                                            @String.Format("{0} {1} - {2} {3} | ", empleado.Nombre, empleado.Apellido, empleado.Especializacion, Environment.NewLine)
+                                            }
+                                            }
+                                        </td>
+                                        <td>@String.Format("${0}", tarea.Costo)</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
                 </div>
+                <!-- /.panel -->
+            </div>
             }
         </div>
     </div>
@@ -135,14 +149,89 @@
 <div class="font-dark bold uppercase">MULTIMEDIA <button class="btn btn-square btn-sm blue todo-bold" id="btnNuevoObjMultimedia">Nuevo</button></div>
 <div class="row-fluid">
     <div class="portlet-body">
-
         @foreach (var item in Model.ListaEtapas)
         {
-            <div id="objMultimedia_@item.IdEtapa" class="row etapaObjetoMultmedia">
-                @foreach (var imageId in item.ListaIdObjetoMultimedia)
-                {<img src="@Url.Action("GetImage", "ObjetoMultimedia", new {Id = imageId})" />
-                }
+        <div id="objMultimedia_@item.IdEtapa" class="row etapaObjetoMultmedia">
+            <br />
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (var imageId in item.ListaIdObjetoMultimedia)
+
+                    {
+                    <div class="col-lg-3 col-md-4 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="@Url.Action(" GetImage", "ObjetoMultimedia" , new { Id=imageId })" style="width:400px; height:300px;" />
+                        </a>
+                    </div>
+                    }
+                    @if (item.ListaIdObjetoMultimedia.Count == 0)
+                    {
+
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail">
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                    </div>
+                    }
+
+                </div>
             </div>
+        </div>
         }
     </div>
 </div>

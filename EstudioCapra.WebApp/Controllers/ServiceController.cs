@@ -112,6 +112,7 @@ namespace EstudioCapra.Controllers
                                                                    FechaInicioTarea = t.FechaInicio,
                                                                    FechaFinTarea = t.FechaFin,
                                                                    idTipoTarea = t.TipoTareaId,
+                                                                   NombreTipoTarea = t.TipoTarea.Nombre,
                                                                    TemplateTarea = t.TipoTarea.TareaTemplate,
                                                                    Costo = t.Costo,
                                                                    ListEmpleado = (from te in _UnitOfWork.TareaEmpleadoRepository.GetAll()
